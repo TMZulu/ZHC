@@ -1,0 +1,12 @@
+name = "700th MF";
+picture = "700th_Cadian_logo_simple.paa";
+logo = "700th_Cadian_logo_simple.paa";
+logoOver = "700th_Cadian_logo_simple.paa";
+actionName = "Website";
+action = "https://myrmidon.org";
+description = "MF7";
+tooltip = "MF7";
+tooltipOwned = "700 Owned";
+overview = "Mission Framework for the 700th Cadian";
+overviewPicture = "700th_Cadian_logo_simple.paa";
+author = "The S5 Team";

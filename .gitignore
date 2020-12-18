@@ -1,0 +1,13 @@
+release/*
+symbols/*
+*.cache
+*.pbo
+texHeaders.bin
+*.swp
+*.swo
+*.biprivatekey
+Thumbs.db
+*.dll
+*.exe
+*.vscode*
+*.out
