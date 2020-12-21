@@ -1,7 +1,8 @@
 <p align="center">
-# ZHC
+    <h1>ZHC</h1>
+</p>
 
-
+<p align="center">
 
     <sup><strong>Requires the latest version of <a href="https://github.com/CBATeam/CBA_A3/releases">CBA A3</a>.</strong></sup>
 </p>
@@ -38,4 +39,4 @@ You can always help out with ongoing development by looking for potential bugs a
 
 ## License
 
-Zeus Enhanced is licensed under the GNU General Public License ([GPLv3](https://github.com/TMZulu/ZHC/blob/master/LICENSE)).
+**ZHC** is licensed under the GNU General Public License ([GPLv3](https://github.com/TMZulu/ZHC/blob/master/LICENSE)).
