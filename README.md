@@ -1,7 +1,8 @@
-# ZHC
-Zulu Headless Client
-
 <p align="center">
+# ZHC
+
+
+
     <sup><strong>Requires the latest version of <a href="https://github.com/CBATeam/CBA_A3/releases">CBA A3</a>.</strong></sup>
 </p>
 
@@ -29,8 +30,12 @@ Zulu Headless Client
 
 ## Contributing
 
-You can always help out with ongoing development by looking for potential bugs and reporting them [`here`](https://github.com/TMZulu/ZHC/issues), or by contributing new features. New pull requests containing bug fixes and new features are always welcome. There is a list of tasks and bugs on the issue tracker on GitHub. Please comment on issues you want to contribute with, that way work isn't duplicated. If you contribute code, feel free to add yourself to the [`AUTHORS.txt`](https://github.com/zen-mod/ZEN/blob/master/AUTHORS.txt)
+You can always help out with ongoing development by looking for potential bugs and reporting them [`here`](https://github.com/TMZulu/ZHC/issues), or by contributing new features. New pull requests containing bug fixes and new features are always welcome. There is a list of tasks and bugs on the issue tracker on GitHub. Please comment on issues you want to contribute with, that way work isn't duplicated. If you contribute code, feel free to add yourself to the [`AUTHORS.txt`](https://github.com/TMZulu/ZHC/blob/master/AUTHORS.txt)
 
 ## Usage
 
 **ZHC** is currently a standalone mod that requires ['CBA'](https://github.com/CBATeam/CBA_A3/releases) for functionality. All settings can be found in addons options and mod keybinds created by CBA. Additional information can be found on the wiki(WIP).
+
+## License
+
+Zeus Enhanced is licensed under the GNU General Public License ([GPLv3](https://github.com/TMZulu/ZHC/blob/master/LICENSE)).
