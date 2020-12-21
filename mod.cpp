@@ -1,12 +1,12 @@
-name = "700th MF";
+name = "ZHC";
 picture = "700th_Cadian_logo_simple.paa";
 logo = "700th_Cadian_logo_simple.paa";
 logoOver = "700th_Cadian_logo_simple.paa";
-actionName = "Website";
-action = "https://myrmidon.org";
+actionName = "Github";
+action = "https://github.com/TMZulu/ZHC";
 description = "MF7";
 tooltip = "MF7";
 tooltipOwned = "700 Owned";
-overview = "Mission Framework for the 700th Cadian";
+overview = "Zulu Headless Client";
 overviewPicture = "700th_Cadian_logo_simple.paa";
-author = "The S5 Team";
+author = "TMZulu";
