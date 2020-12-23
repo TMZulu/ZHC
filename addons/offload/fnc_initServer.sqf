@@ -10,7 +10,7 @@
  * NONE
  *
  * Example:
- * [] call mf7_offload_fnc_handleDisconnect
+ * [] call zhc_offload_fnc_handleDisconnect
  *
  * Public: No
  */

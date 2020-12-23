@@ -10,7 +10,7 @@
  * NONE
  *
  * Example:
- * [] call mf7_offload_fnc_rebalance
+ * [] call zhc_offload_fnc_rebalance
  */
 if (GVAR(HeadlessArray) isEqualTo []) exitWith {
     BROADCAST_WARN("Rebalance called without an HC connected");

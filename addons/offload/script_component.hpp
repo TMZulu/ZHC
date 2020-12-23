@@ -1,6 +1,6 @@
 #define COMPONENT offload
 #define COMPONENT_BEAUTIFIED Offload
-#include "\m\mf7\addons\main\script_mod.hpp"
+#include "\m\zhc\addons\main\script_mod.hpp"
 
 // #define DEBUG_MODE_FULL
 // #define DISABLE_COMPILE_CACHE
@@ -14,7 +14,7 @@
     #define DEBUG_SETTINGS DEBUG_SETTINGS_OFFLOAD
 #endif
 
-#include "\m\mf7\addons\main\script_macros.hpp"
+#include "\m\zhc\addons\main\script_macros.hpp"
 
 #define DEFAULT_DELAY_CYCLE 20
 #define DEFAULT_DELAY_PER 15

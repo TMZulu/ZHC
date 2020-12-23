@@ -11,7 +11,7 @@
  * NONE
  *
  * Example:
- * [] call mf7_offload_fnc_groupSpawned
+ * [] call zhc_offload_fnc_groupSpawned
  */
 
 //OBSOLETE

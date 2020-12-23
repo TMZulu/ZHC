@@ -10,7 +10,7 @@
  * NONE
  *
  * Example:
- * [] spawn mf7_offload_fnc_rebalanceoop
+ * [] spawn zhc_offload_fnc_rebalanceoop
  *
  * Public: No
  */

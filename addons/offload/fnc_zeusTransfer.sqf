@@ -10,7 +10,7 @@
  * NONE
  *
  * Example:
- * [] call mf7_offload_fnc_zeusTransfer
+ * [] call zhc_offload_fnc_zeusTransfer
  */
 private _who = _this select 0;
 private _groups = _this select 1;

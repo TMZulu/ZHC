@@ -10,7 +10,7 @@
  * NONE
  *
  * Example:
- * [] call mf7_offload_fnc_transfer
+ * [] call zhc_offload_fnc_transfer
  */
 params [["_headless",true]];
 

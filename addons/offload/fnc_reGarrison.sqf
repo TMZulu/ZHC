@@ -10,7 +10,7 @@
  * NONE
  *
  * Example:
- * [] call mf7_offload_fnc_reGarrison
+ * [] call zhc_offload_fnc_reGarrison
  */
 private _group = _this select 0;
 

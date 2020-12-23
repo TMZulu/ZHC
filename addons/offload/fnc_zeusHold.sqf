@@ -10,7 +10,7 @@
  * NONE
  *
  * Example:
- * [] call mf7_offload_fnc_zeusHold
+ * [] call zhc_offload_fnc_zeusHold
  */
 if (!([player] call EFUNC(core,isZeus))) exitwith {};//if not zeus, exit
 if (!GVAR(EnableZeusHolding)) exitWith {};//if holding function disabled exit

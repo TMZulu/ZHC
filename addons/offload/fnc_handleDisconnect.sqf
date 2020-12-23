@@ -13,7 +13,7 @@
  * NONE
  *
  * Example:
- * [] call mf7_offload_fnc_handleDisconnect
+ * [] call zhc_offload_fnc_handleDisconnect
  */
 
 params ["_unit", "_id", "_uid", "_name","_group","_owner"];

@@ -12,19 +12,19 @@ import subprocess
 import winreg
 
 ######## GLOBALS #########
-MAINDIR = "m"
-PROJECTDIR = "mf7"
+MAINDIR = "t"
+PROJECTDIR = "zhc"
 CBA = "P:\\x\\cba"
 ##########################
 
 def main():
     FULLDIR = "{}\\{}".format(MAINDIR,PROJECTDIR)
     print("""
-  #########################################################
-  # 700th Mission Framework Development Environment Setup #
-  #########################################################
+  #####################################
+  # ZHC Development Environment Setup #
+  #####################################
 
-  This script will create your ACRE2 dev environment for you.
+  This script will create your ZHC dev environment for you.
 
   Before you run this, you should already have:
     - The Arma 3 Tools installed properly via Steam
@@ -33,8 +33,8 @@ def main():
   If you have not done those things yet, please abort this script in the next step and do so first.
 
   This script will create two hard links on your system, both pointing to your ACRE2 project folder:
-    [Arma 3 installation directory]\\{} => mf7 project folder
-    P:\\{}                              => mf7 project folder
+    [Arma 3 installation directory]\\{} => zhc project folder
+    P:\\{}                              => zhc project folder
 
   It will also copy the required CBA includes to {}, if you do not have the CBA source code already.""".format(FULLDIR,FULLDIR,CBA))
     print("\n")

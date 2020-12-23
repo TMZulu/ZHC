@@ -10,7 +10,7 @@
  * NONE
  *
  * Example:
- * [] call mf7_offload_fnc_cleanup
+ * [] call zhc_offload_fnc_cleanup
  */
 
 private ["_delete","_checkGroup","_dataIndex"];

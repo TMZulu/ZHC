@@ -13,7 +13,7 @@
  * NONE
  *
  * Example:
- * [] call mf7_offload_fnc_emergencyDump
+ * [] call zhc_offload_fnc_emergencyDump
  *
  * Public: No
  */

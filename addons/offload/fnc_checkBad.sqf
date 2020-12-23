@@ -10,7 +10,7 @@
  * 0: BOOL - Is Exempt
  *
  * Example:
- * [] call mf7_offload_fnc_checkBad
+ * [] call zhc_offload_fnc_checkBad
  */
 
 private _group = _this select 0;

@@ -6,7 +6,7 @@ import subprocess
 
 ######## GLOBALS #########
 MAINPREFIX = "m"
-PREFIX = "mf7_"
+PREFIX = "zhc_"
 ##########################
 
 def mod_time(path):
@@ -31,9 +31,9 @@ def check_for_obsolete_pbos(addonspath, file):
 
 def main():
     print("""
-  #######################################
-  # 700th Mission Framework Debug Build #
-  #######################################
+  ###################
+  # ZHC Debug Build #
+  ###################
 """)
 
     scriptpath = os.path.realpath(__file__)

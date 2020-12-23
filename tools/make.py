@@ -57,7 +57,7 @@ if sys.platform == "win32":
     import winreg
 
 ######## GLOBALS #########
-project = "mf7"
+project = "zhc"
 project_version = "1.0.0"
 arma3tools_path = ""
 work_drive = ""
@@ -66,11 +66,11 @@ make_root = ""
 release_dir = ""
 module_root_parent = ""
 optionals_root = ""
-key_name = "mf7"
+key_name = "zhc"
 key = ""
 dssignfile = ""
-prefix = "mf7"
-pbo_name_prefix = "mf7_"
+prefix = "zhc"
+pbo_name_prefix = "zhc_"
 signature_blacklist = []
 importantFiles = ["700th_Cadian_logo_simple.paa", "mod.cpp", "LICENSE"]
 extrasFiles = ["missionConfig.sqf","init.sqf"]
@@ -79,7 +79,7 @@ versionFiles = []
 extensions32 = []
 extensions64 = []
 # be_cred_file expected to be in folder defined by enviorment variable CBA_PUBLISH_CREDENTIALS_PATH
-be_cred_filename = "mf7_battleye_creds.json"
+be_cred_filename = "zhc_battleye_creds.json"
 
 
 ciBuild = False # Used for CI builds
@@ -347,7 +347,7 @@ def compile_extensions(extensions_root, force_build):
             subprocess.call(["cmake", "..", "-A", "Win32"])
             print()
             extensions32_cmd = joinstr.join(extensions32)
-            subprocess.call(["msbuild", "MF7.sln", "/m", "/t:{}".format(extensions32_cmd), "/p:Configuration=RelWithDebInfo"])
+            subprocess.call(["msbuild", "ZHC.sln", "/m", "/t:{}".format(extensions32_cmd), "/p:Configuration=RelWithDebInfo"])
         else:
             print("No 32-bit extensions found.")
 
@@ -362,7 +362,7 @@ def compile_extensions(extensions_root, force_build):
             subprocess.call(["cmake", "..", "-A", "x64"])
             print()
             extensions64_cmd = joinstr.join(extensions64)
-            subprocess.call(["msbuild", "MF7.sln", "/m", "/t:{}".format(extensions64_cmd), "/p:Configuration=RelWithDebInfo"])
+            subprocess.call(["msbuild", "ZHC.sln", "/m", "/t:{}".format(extensions64_cmd), "/p:Configuration=RelWithDebInfo"])
         else:
             print("No 64-bit extensions found.")
     except:
@@ -705,14 +705,14 @@ def set_version_in_files():
 
                 if fileText:
                     # Extension version file
-                    if "MF7_VERSION_" in fileText:
+                    if "ZHC_VERSION_" in fileText:
                         print_green("Changing extension version => {} in {}".format(newVersion, filePath))
                         with open(filePath, "w", newline="\n") as file:
                             file.writelines([*
-                                "#define MF7_VERSION_MAJOR {}\n".format(newVersionArr[0]),
-                                "#define MF7_VERSION_MINOR {}\n".format(newVersionArr[1]),
-                                "#define MF7_VERSION_SUBMINOR {}\n".format(newVersionArr[2]),
-                                "#define MF7_VERSION_BUILD {}\n".format(newVersionArr[3])
+                                "#define ZHC_VERSION_MAJOR {}\n".format(newVersionArr[0]),
+                                "#define ZHC_VERSION_MINOR {}\n".format(newVersionArr[1]),
+                                "#define ZHC_VERSION_SUBMINOR {}\n".format(newVersionArr[2]),
+                                "#define ZHC_VERSION_BUILD {}\n".format(newVersionArr[3])
                             ])
                         continue
 

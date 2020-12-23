@@ -10,7 +10,7 @@
  * NONE
  *
  * Example:
- * [] call mf7_offload_fnc_getGroups
+ * [] call zhc_offload_fnc_getGroups
  */
 private ["_owner","_excluded","_checkGroup"];
 {

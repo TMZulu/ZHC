@@ -10,7 +10,7 @@
  * NONE
  *
  * Example:
- * [] call mf7_offload_fnc_syncZeus
+ * [] call zhc_offload_fnc_syncZeus
  */
 
  //OBSOLETE

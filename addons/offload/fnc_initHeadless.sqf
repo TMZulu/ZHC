@@ -11,7 +11,7 @@
  * NONE
  *
  * Example:
- * [] call mf7_offload_fnc_initHeadless
+ * [] call zhc_offload_fnc_initHeadless
  */
 private _index = -1;
 

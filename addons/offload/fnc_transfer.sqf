@@ -10,7 +10,7 @@
  * NONE
  *
  * Example:
- * [] call mf7_offload_fnc_transfer
+ * [] call zhc_offload_fnc_transfer
  */
 if (GVAR(HeadlessArray) isEqualTo []) exitWith {};
 
@@ -51,7 +51,7 @@ BROADCAST_INFO("Started Transferring");
         };
 
         if (GVAR(HeadlessGrpData) findIf {_x select 0 == _groupMoving} == 1) exitwith {
-            diag_log format["WARNING: MF7 Main HC Offload Loop. Group:%1 already offloaded but in TransferQueue",str _groupMoving];
+            diag_log format["WARNING: ZHC Main HC Offload Loop. Group:%1 already offloaded but in TransferQueue",str _groupMoving];
             BROADCAST_WARN_1("Group:%1 already offloaded but in TransferQueue",str _groupMoving);
         };
         //GVAR(HeadlessGroups) pushBack _groupMoving;
