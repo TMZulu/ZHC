@@ -1,9 +1,9 @@
 // COMPONENT should be defined in the script_component.hpp and included BEFORE this hpp
 
-#define MAINPREFIX m
+#define MAINPREFIX t
 #define PREFIX zhc
 
-#include "\m\zhc\addons\main\script_version.hpp"
+#include "\t\zhc\addons\main\script_version.hpp"
 
 #define VERSION MAJOR.MINOR.PATCHLVL.BUILD
 #define VERSION_AR MAJOR,MINOR,PATCHLVL,BUILD
