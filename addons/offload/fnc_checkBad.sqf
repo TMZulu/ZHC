@@ -41,6 +41,7 @@ if (isPlayer leader _group) exitWith {true};
     }forEach _badNames;
     if (_exempt) exitwith{};
 }forEach units _group;
+
 if (_exempt) exitwith{_exempt};
 
 //check unit types
@@ -54,6 +55,7 @@ if (_exempt) exitwith{_exempt};
     }forEach _badTypes;
     if (_exempt) exitwith{};
 }forEach units _group;
+
 if (_exempt) exitwith{_exempt};
 
 //check unit's vehicle's name
@@ -67,6 +69,7 @@ if (_exempt) exitwith{_exempt};
     }forEach _badNames;
     if (_exempt) exitwith{};
 }forEach units _group;
+
 if (_exempt) exitwith{_exempt};
 
 //check unit's vehicle's type
@@ -79,6 +82,7 @@ if (_exempt) exitwith{_exempt};
         };
     }forEach _badNames;
 }forEach units _group;
+
 if (_exempt) exitwith{_exempt};
 
 //check goup name

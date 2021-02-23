@@ -32,6 +32,16 @@
     true
 ] call CBA_settings_fnc_init;
 
+// Check Delay
+[
+    QGVAR(CheckDelay),
+    "SLIDER",
+    ["Check Delay","Time delay between checking for untransferred groups"],
+    ["ZHC Settings","Base"],
+    [1,120,DEFAULT_DELAY_CHECK,0],
+    true
+] call CBA_settings_fnc_init;
+
 // Offload Delay
 [
     QGVAR(OffloadDelay),
@@ -42,7 +52,7 @@
     true
 ] call CBA_settings_fnc_init;
 
-// Offload Delay
+// Emergency Offload Delay
 [
     QGVAR(EmergencyOffloadDelay),
     "SLIDER",
@@ -62,19 +72,6 @@
     true
 ] call CBA_settings_fnc_init;
 
-// Debug Mode
-private _debugOptions = ["Disabled","All Users","Admin/Zeus Only"];
-private _debugValues = [0,1,2];
-[
-    QGVAR(DebugMode),
-    "LIST",
-    ["Debug Availability","Debug mode availability. Default: Admin/Zeus Only"],
-    ["ZHC Settings","Base"],
-    [_debugValues,_debugOptions,2],
-    true,
-    {},
-    true // needs mission restart
-] call CBA_settings_fnc_init;
 
 //Naked Unit Failsafe
 private _loadoutOptions = ["Disabled","Default Current Loadout","Default Config Loadout"];
@@ -90,23 +87,11 @@ private _loadoutValues = [0, 1, 2];
     true // needs mission restart
 ] call CBA_settings_fnc_init;
 
-// Attach to compatibility
-/*[
-    QGVAR(AttachToCompat),
-    "CHECKBOX",
-    ["AttachTo Compatibility","Enable AttachTo compatibility when transferring"],
-    ["ZHC Settings"],
-    true,
-    true,
-    {},
-    true
-] call CBA_settings_fnc_init;*/
-
 // Zeus Holding
 [
     QGVAR(EnableZeusHolding),
     "CHECKBOX",
-    ["Enable Zeus Holding","Enable Zeus to hold and trnsfer unit to himself from HC"],
+    ["Enable Zeus Holding","Enable Zeus to hold and transfer unit to himself from HC"],
     ["ZHC Settings","Zeus"],
     true,
     true
@@ -121,6 +106,21 @@ private _loadoutValues = [0, 1, 2];
     [0,200,0,0],
     true
 ] call CBA_settings_fnc_init;*/
+
+// Debug Mode
+private _debugOptions = ["Disabled","All Users","Admin/Zeus Only"];
+private _debugValues = [0,1,2];
+[
+    QGVAR(DebugMode),
+    "LIST",
+    ["Debug Availability","Debug mode availability. Default: Admin/Zeus Only"],
+    ["ZHC Settings","Debug"],
+    [_debugValues,_debugOptions,2],
+    true,
+    {},
+    true // needs mission restart
+] call CBA_settings_fnc_init;
+
 
 private _verboseOptions = ["None","Low","Normal","Verbose"];
 private _verboseValues = [0,1,2,3];

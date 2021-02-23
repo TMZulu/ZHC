@@ -20,15 +20,11 @@ if (isServer) then {
     GVAR(HeadlessArray) = [];//list of HCs
     GVAR(HeadlessIds) = [];
     GVAR(HeadlessLocalCounts) = [];
-    //GVAR(HeadlessGroups) = [];
-    //GVAR(HeadlessGroupOwners) = [];
     GVAR(HeadlessGrpData) = [];
 
     GVAR(ZeusArray) = [];//Zeus array
     GVAR(ZeusIds) = [];//Zeus Client Ids
-    //GVAR(ZeusGroups) = [];//All groups held by Zeus(s)
     GVAR(ZeusGrpData) = [];
-    //GVAR(ZeusGroupOwners) = [];//Zeus group owners (synced with GVAR(ZeusGroups))
     GVAR(ZeusHeldUnitCounts) = [];//Zeus held unit counts
     GVAR(TransferQueue) = [];
 
@@ -49,9 +45,7 @@ if (hasInterface) then {
     if (isNil QGVAR(ZeusArray)) then {
         GVAR(ZeusArray) = [];//Zeus array
         GVAR(ZeusIds) = [];//Zeus Client Ids
-        //GVAR(ZeusGroups) = [];//All groups held by Zeus(s)
         GVAR(ZeusHeldUnitCounts) = [];//Zeus held unit counts
-        //GVAR(ZeusGroupOwners) = [];//All groups held by Zeus(s)
         GVAR(ZeusGrpData) = [];
     };
 
@@ -71,8 +65,6 @@ if (hasInterface) then {
 if(!isServer && !hasInterface) then {
     BROADCAST_INFO_1("%1 Initializing",player);
     //set up arrays and variables
-
-    //GVAR(HeadlessLocalCounts) = [];
 
     GVAR(DataIndex) = -1;
 

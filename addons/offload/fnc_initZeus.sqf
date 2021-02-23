@@ -20,19 +20,14 @@ private _index = -1;
 
 _index = GVAR(ZeusArray) pushBackUnique player;
 if (_index != -1) then {//doesnt exist
-    //GVAR(ZeusHeldUnitCounts) pushback 0;
     GVAR(ZeusIds) pushback clientOwner;
 } else {//exists
     _index = GVAR(ZeusArray) find player;
-    //(GVAR(ZeusHeldUnitCounts) select _index) = 0;
-    //GVAR(ZeusIds) select _index = clientOwner;
     GVAR(ZeusIds)  set [_index, clientOwner];
 };
 
 publicVariable QGVAR(ZeusArray);
 publicVariable QGVAR(ZeusIds);
-
-//[] call FUNC(syncData);
 
 GVAR(DataIndex) = _index;
 

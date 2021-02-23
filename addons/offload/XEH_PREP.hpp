@@ -14,8 +14,6 @@ PREP(loop);
 PREP(rebalance);
 PREP(reGarrison);
 PREP(syncData);
-PREP(syncHCs);
-PREP(syncZeus);
 PREP(transfer);
 PREP(zeusHold);
 PREP(zeusTransfer);

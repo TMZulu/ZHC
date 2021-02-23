@@ -25,7 +25,7 @@ sleep GVAR(StartDelay);
 
 while {GVAR(Enabled)} do {
     BROADCAST_INFO("Cycle Start");
-    waitUntil {sleep 0.5; count GVAR(HeadlessArray) > 0};//make sure there is a headless client available
+    waitUntil {sleep 2; count GVAR(HeadlessArray) > 0};//make sure there is a headless client available
 
     waitUntil {sleep 0.5; GVAR(FastTransferring) == false};
 
@@ -33,12 +33,12 @@ while {GVAR(Enabled)} do {
     if (GVAR(RebalanceDelay) != 0 && time >= _rebalanceTime && count GVAR(HeadlessArray) > 1) then {  //rebalance timer
 
         _scriptHandle = [] spawn FUNC(rebalance);
-        waitUntil {scriptDone _scriptHandle};//wait until rebalancing complete
+        waitUntil {sleep 1; scriptDone _scriptHandle};//wait until rebalancing complete
         _rebalanceTime = time + GVAR(RebalanceDelay);
     };
 
     BROADCAST_INFO("Transfer Catch");
-    waitUntil {sleep 3;
+    waitUntil {sleep GVAR(CheckDelay);
             [] call FUNC(getGroups);
             ((count GVAR(TransferQueue) > 0) || (time >= _rebalanceTime))
         };//wait for groups to move
@@ -48,7 +48,7 @@ while {GVAR(Enabled)} do {
     if (count GVAR(TransferQueue) > 0) then {
 
         _scriptHandle = [] spawn FUNC(transfer);//call main offloading script
-        waitUntil {scriptDone _scriptHandle};//wait until offloading complete
+        waitUntil {sleep 1; scriptDone _scriptHandle};//wait until offloading complete
     };
 
     BROADCAST_INFO("Cycle End");
