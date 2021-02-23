@@ -1,5 +1,6 @@
 <p align="center">
-    <h1>ZHC</h1>
+    <img src="https://github.com/TMZulu/ZHC/blob/conversion/ZHCLogo.png" width="600">
+</p>
 </p>
 
 <p align="center">
@@ -28,6 +29,7 @@
 - Unit HC Blacklisting
 - Achilles/Ares/ZEN Garrison Compatibility
 - Naked Unit Prevention/Reduction
+- And more!
 
 ## Contributing
 
