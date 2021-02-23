@@ -1,10 +1,8 @@
 <p align="center">
     <img src="https://github.com/TMZulu/ZHC/blob/conversion/ZHCLogo.png" width="600">
 </p>
-</p>
 
 <p align="center">
-
     <sup><strong>Requires the latest version of <a href="https://github.com/CBATeam/CBA_A3/releases">CBA A3</a>.</strong></sup>
 </p>
 
