@@ -30,7 +30,6 @@ private _releasedCountUnits = 0;
 private _groups = [];
 private _debugEnabled = false;
 if (GVAR(DebugMode) > 0) then { _debugEnabled = true; };
-//GVAR(probe1) = _selectedGroups;
 [false] remoteExecCall [QFUNC(syncData), 2];//Grab data from server
 sleep (0.1);
 //processing
@@ -46,7 +45,6 @@ sleep (0.1);
     if (!_held) then {
 
         GVAR(LocalHeldGroups) pushBack _x;
-        //GVAR(ZeusGroups) pushback _x;
         INC(_heldCount);
         _heldCountUnits = _heldCountUnits + count units _x;
         _groups pushback _x;
@@ -60,10 +58,6 @@ sleep (0.1);
             _groupIndex = GVAR(ZeusGrpData) findIf {_x select 0 == _groupMoving};
             GVAR(ZeusGrpData) deleteAt _groupIndex;
 
-            //_groupIndex = GVAR(ZeusGroups) find _groupMoving;
-            //GVAR(ZeusGroups) deleteAt _groupIndex;
-            //GVAR(ZeusGroupOwners) deleteAt _groupIndex;
-
             if (_debugEnabled) then {
                 _groupMoving setVariable [QGVAR(OwningClient), "None", true];
             };
@@ -73,13 +67,10 @@ sleep (0.1);
         };
     };
 } forEach _selectedGroups;
-//GVAR(probe) = _groups;
 systemChat format ["%1 Groups With %2 Units Flagged for Transfer to Local Machine.", _heldCount, _heldCountUnits];
 systemChat format ["%1 Groups With %2 Units Released Back to Headless Client.", _releasedCount, _releasedCountUnits];
 systemChat format ["%1 Groups Unable to be Flagged. Held by Another Curator or Player.", _heldOther];
 
 publicVariableServer QGVAR(ZeusGrpData);
-//publicVariableServer QGVAR(ZeusGroups); //sync
-//publicVariableServer QGVAR(ZeusGroupOwners);
 
 [_who, _groups, GVAR(DataIndex)] remoteExec [QFUNC(zeusTransfer), 2, false];

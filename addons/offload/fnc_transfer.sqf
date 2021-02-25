@@ -121,12 +121,4 @@ BROADCAST_INFO("Started Transferring");
 
 } forEach _groupArray;
 BROADCAST_INFO("Completed Transferring");
-/*
-{
-    //_x publicVariableClient QGVAR(HeadlessArray);
-    //_x publicVariableClient QGVAR(HeadlessIds);
-    //_x publicVariableClient QGVAR(HeadlessGroups);
-    _x publicVariableClient QGVAR(HeadlessLocalCounts);
-    //_x publicVariableClient QGVAR(HeadlessGroupOwners);
-} forEach GVAR(HeadlessIds);
-*/
+
