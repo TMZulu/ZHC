@@ -4,13 +4,13 @@
  * Transfers AI to Zeus for holding
  *
  * Arguments:
- * NONE
+ * 0: OBJECT - Zeus Calling
+ * 1: ARRAY[GROUPS] - List of groups
+ * 3: INT - Zeus data array index
  *
  * Return Value:
  * NONE
  *
- * Example:
- * [] call zhc_offload_fnc_zeusTransfer
  */
 private _who = _this select 0;
 private _groups = _this select 1;

@@ -12,10 +12,6 @@
  * Return Value:
  * NONE
  *
- * Example:
- * [] call zhc_offload_fnc_emergencyDump
- *
- * Public: No
  */
 private _groups = _this select 0;
 private _isHC = _this select 1;

@@ -9,8 +9,6 @@
  * Return Value:
  * NONE
  *
- * Example:
- * [] call zhc_offload_fnc_cleanup
  */
 
 private ["_delete","_checkGroup","_dataIndex"];

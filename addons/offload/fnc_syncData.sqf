@@ -10,7 +10,7 @@
  * NONE
  *
  * Example:
- * [] call zhc_offload_fnc_transfer
+ * [] call zhc_offload_fnc_syncData
  */
 params [["_headless",true]];
 

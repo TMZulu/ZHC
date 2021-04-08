@@ -9,8 +9,6 @@
  * Return Value:
  * 0: BOOL - Is Exempt
  *
- * Example:
- * [] call zhc_offload_fnc_checkBad
  */
 
 private _group = _this select 0;
