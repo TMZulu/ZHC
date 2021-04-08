@@ -12,14 +12,11 @@
  * Return Value:
  * NONE
  *
- * Example:
- * [] call mf7_offload_fnc_handleDisconnect
  */
 
 params ["_unit", "_id", "_uid", "_name","_group","_owner"];
 private _index = -1;
 private _dumpGroup = [];
-//GVAR(probe2) = _unit;
 private _debugEnabled = false;
 if (GVAR(DebugMode) > 0) then { _debugEnabled = true; };
 
@@ -44,7 +41,6 @@ if (_unit in GVAR(HeadlessArray)) exitWith {
     } forEach GVAR(HeadlessGrpData);
 
     if (!(_dumpGroup isEqualTo [])) then {
-        //GVAR(probe1) = _dumpGroup;
         [_dumpGroup, true] spawn FUNC(emergencyDump);
     };
 };

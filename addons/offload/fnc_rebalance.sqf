@@ -10,14 +10,14 @@
  * NONE
  *
  * Example:
- * [] call mf7_offload_fnc_rebalance
+ * [] call zhc_offload_fnc_rebalance
  */
 if (GVAR(HeadlessArray) isEqualTo []) exitWith {
     BROADCAST_WARN("Rebalance called without an HC connected");
 };
 
 BROADCAST_INFO("Rebalance started");
-private ["_maxHC","_minHC","_diff","_i","_groupMoving","_groupIndex","_prevCountMax","_prevCountMin", "_minHCName","_maxHCName","_HCid","_groupGarrisoned","_group","_owner"];
+private ["_maxHC","_minHC","_diff","_i","_groupMoving","_groupIndex","_prevCountMax","_prevCountMin", "_minHCName","_maxHCName","_HCid","_groupGarrisoned","_group","_owner", "_scriptID"];
 private _balanced = false;
 
 //settings variable conversion(optimisation)
@@ -25,9 +25,6 @@ private _transferLoadout = GVAR(TransferLoadout);
 private _debugEnabled = false;
 if (GVAR(DebugMode) > 0) then { _debugEnabled = true; };
 
-//[] remoteExec [QFUNC(syncHCs), GVAR(HeadlessIds), false];//update Headless local counts
-
-//sleep 5;
 
 while {!_balanced} do {
     waitUntil {sleep 0.1; !GVAR(FastTransferring)};//hold in case of emergency dump or fast transfer
@@ -59,7 +56,8 @@ while {!_balanced} do {
     _diff = (_prevCountMax - _prevCountMin);
 
     if (_diff > 1) then {
-        [] call FUNC(cleanup);//clear empty groups
+        _scriptID  = [] spawn FUNC(cleanup);//clear empty groups
+        waitUntil {sleep 1; scriptDone _scriptID};//wait till clean finishes
 
         _maxHCName = GVAR(HeadlessArray) select _maxHC;
         _minHCName = GVAR(HeadlessArray) select _minHC;

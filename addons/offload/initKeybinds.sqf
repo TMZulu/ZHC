@@ -1,7 +1,7 @@
 #include "\a3\ui_f\hpp\definedikcodes.inc"
 //Mark Ai for Zeus Offload
 [
-    "700th Framework",
+    "ZHC Settings",
     "hc_hold_key",
     "Hold Selected Units on Client",
     {_this spawn FUNC(zeusHold);},
@@ -11,7 +11,7 @@
 
 //Toggle debug
 [
-    "700th Framework",
+    "ZHC Settings",
     "hc_debug_key",
     "Toggle Debug Mode",
     {_this call FUNC(debugToggle);},

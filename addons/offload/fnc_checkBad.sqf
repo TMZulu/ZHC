@@ -9,8 +9,6 @@
  * Return Value:
  * 0: BOOL - Is Exempt
  *
- * Example:
- * [] call mf7_offload_fnc_checkBad
  */
 
 private _group = _this select 0;
@@ -41,6 +39,7 @@ if (isPlayer leader _group) exitWith {true};
     }forEach _badNames;
     if (_exempt) exitwith{};
 }forEach units _group;
+
 if (_exempt) exitwith{_exempt};
 
 //check unit types
@@ -54,6 +53,7 @@ if (_exempt) exitwith{_exempt};
     }forEach _badTypes;
     if (_exempt) exitwith{};
 }forEach units _group;
+
 if (_exempt) exitwith{_exempt};
 
 //check unit's vehicle's name
@@ -67,6 +67,7 @@ if (_exempt) exitwith{_exempt};
     }forEach _badNames;
     if (_exempt) exitwith{};
 }forEach units _group;
+
 if (_exempt) exitwith{_exempt};
 
 //check unit's vehicle's type
@@ -79,6 +80,7 @@ if (_exempt) exitwith{_exempt};
         };
     }forEach _badNames;
 }forEach units _group;
+
 if (_exempt) exitwith{_exempt};
 
 //check goup name

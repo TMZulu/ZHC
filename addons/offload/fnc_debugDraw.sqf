@@ -9,8 +9,6 @@
  * Return Value:
  * NONE
  *
- * Example:
- * [] call mf7_offload_fnc_debugDraw
  */
 params [["_enable",false]];
 private ["_color","_name","_owner","_text","_valid"];

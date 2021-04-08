@@ -10,7 +10,7 @@
  * NONE
  *
  * Example:
- * [] call mf7_offload_fnc_handleDisconnect
+ * [] call zhc_offload_fnc_handleDisconnect
  *
  * Public: No
  */
@@ -44,19 +44,3 @@ QGVAR(ZeusGrpData) addPublicVariableEventHandler {
         } forEach GVAR(ZeusIds);
     };
 };
-
-/*QGVAR(ZeusGroups) addPublicVariableEventHandler {
-    if (!GVAR(FastTransferring)) then {
-        {
-            _x publicVariableClient QGVAR(ZeusGroups);
-        } forEach GVAR(ZeusIds);
-    };
-};
-
-QGVAR(ZeusGroupOwners) addPublicVariableEventHandler {
-    if (!GVAR(FastTransferring)) then {
-        {
-            _x publicVariableClient QGVAR(ZeusGroupOwners);
-        } forEach GVAR(ZeusIds);
-    };
-};*/

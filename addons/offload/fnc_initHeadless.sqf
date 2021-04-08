@@ -11,7 +11,7 @@
  * NONE
  *
  * Example:
- * [] call mf7_offload_fnc_initHeadless
+ * [] call zhc_offload_fnc_initHeadless
  */
 private _index = -1;
 
@@ -24,30 +24,25 @@ sleep (random 3);
 sleep 0.5;
 _index = GVAR(HeadlessArray) pushBackUnique player;
 if (_index != -1) then { //exists
-    //GVAR(HeadlessLocalCounts) pushback 0;
     GVAR(HeadlessIds) pushback clientOwner;
 } else {  //doesnt exist
     _index = GVAR(HeadlessArray) find player;
-    //GVAR(HeadlessLocalCounts) set [_index, 0];
     GVAR(HeadlessIds)  set [_index, clientOwner];
 };
 
 publicVariable QGVAR(HeadlessArray);
 publicVariable QGVAR(HeadlessIds);
-//publicVariableServer QGVAR(HeadlessLocalCounts);
 
-//[] call FUNC(syncData);
+
 sleep (5);
 if (!(player in GVAR(HeadlessArray))) then {
     [true] remoteExecCall [QFUNC(syncData), 2];//Grab data from server
     sleep 0.5;
     _index = GVAR(HeadlessArray) pushBackUnique player;
     if (_index != -1) then { //exists
-        //GVAR(HeadlessLocalCounts) pushback 0;
         GVAR(HeadlessIds) pushback clientOwner;
     } else {  //doesnt exist
         _index = GVAR(HeadlessArray) find player;
-        //GVAR(HeadlessLocalCounts) set [_index, 0];
         GVAR(HeadlessIds)  set [_index, clientOwner];
     };
 
@@ -57,5 +52,7 @@ if (!(player in GVAR(HeadlessArray))) then {
 };
 
 GVAR(DataIndex) = _index;
+
+[] call EFUNC(stat,fpsHCHandler); //start map fps&count debug printing 
 
 BROADCAST_INFO_1("%1 Initialized",player);

@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project name="zhc">
+    <Package name="Main">
+        <Key ID="STR_zhc_Main_Author">
+            <English>ZHC CBATeam/English>
+        </Key>
+        <Key ID="STR_zhc_Main_URL">
+            <English>https://github.com/TMZulu/ZHC</English>
+        </Key>
+    </Package>
+</Project>
