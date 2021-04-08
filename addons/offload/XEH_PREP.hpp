@@ -4,7 +4,6 @@ PREP(debugDraw);
 PREP(debugToggle);
 PREP(emergencyDump);
 PREP(getGroups);
-PREP(groupSpawned);
 PREP(handleDisconnect);
 PREP(initHeadless);
 PREP(initOffload);
