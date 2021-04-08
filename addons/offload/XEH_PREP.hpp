@@ -9,6 +9,7 @@ PREP(initHeadless);
 PREP(initOffload);
 PREP(initServer);
 PREP(initZeus);
+PREP(isZeus);
 PREP(loop);
 PREP(rebalance);
 PREP(reGarrison);

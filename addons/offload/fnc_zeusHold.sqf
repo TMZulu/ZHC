@@ -12,7 +12,7 @@
  * Example:
  * [] call zhc_offload_fnc_zeusHold
  */
-if (!([player] call EFUNC(core,isZeus))) exitwith {};//if not zeus, exit
+if (!([player] call FUNC(isZeus))) exitwith {};//if not zeus, exit
 if (!GVAR(EnableZeusHolding)) exitWith {};//if holding function disabled exit
 
 private ['_lead','_groupMoving','_groupIndex'];
@@ -36,7 +36,7 @@ sleep (0.1);
 {
     _groupMoving = _x;
     _lead = leader _x;
-    if (_x in GVAR(LocalHeldGroups) || (GVAR(ZeusGrpData) findIf {_x select 0 == _checkGroup} == -1) || isPlayer _lead) then {
+    if (_x in GVAR(LocalHeldGroups) || (GVAR(ZeusGrpData) findIf {_x select 0 == _groupMoving} != -1) || isPlayer _lead) then {
         _held = true;
     } else {
         _held = false;

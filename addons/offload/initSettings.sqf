@@ -128,7 +128,7 @@ private _verboseValues = [0,1,2,3];
 [
     QGVAR(Verbosity),
     "LIST",
-    ["Verbose","HC System Debug Verbosity Level"],
+    ["Debug Verbosity","HC System Debug Verbosity Level"],
     ["ZHC Settings","Debug"],
     [_verboseValues,_verboseOptions,0],
     true,
