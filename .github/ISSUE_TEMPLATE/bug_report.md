@@ -1,7 +1,7 @@
 ---
 name: Bug report
 about: Create a report to help us improve ZHC
-title: "[FEATURE]"
+title: "[BUG]"
 labels: ''
 assignees: ''
 
