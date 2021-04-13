@@ -2,6 +2,7 @@
 /*
  * Author: TMZulu 
  * Displays fps of server in the bottom left of the map
+ * Inspired by KP Liberation https://github.com/KillahPotatoes/KP-Liberation
  *
  * Arguments:
  * 0: Client Name <STRING>
