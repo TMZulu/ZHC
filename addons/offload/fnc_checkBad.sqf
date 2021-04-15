@@ -56,7 +56,7 @@ if (_exempt) exitwith{_exempt};
 
 if (_exempt) exitwith{_exempt};
 
-//check unit's vehicle's name
+//check unit's vehicle's type
 {
     _name = typeOf (vehicle _x);
     {
@@ -64,13 +64,13 @@ if (_exempt) exitwith{_exempt};
         {
             _exempt = true;
         };
-    }forEach _badNames;
+    }forEach _badTypes;
     if (_exempt) exitwith{};
 }forEach units _group;
 
 if (_exempt) exitwith{_exempt};
 
-//check unit's vehicle's type
+//check unit's vehicle's Name
 {
     _name = str (vehicle _x);
     {
