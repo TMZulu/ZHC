@@ -19,9 +19,10 @@ if (hasInterface) exitwith {};
 
 private _position = EGVAR(offload,DataIndex) + 1;//use HC array index
 private _sourcestr = format["HC%1", _position];
-
-GVAR(fpsDisplayHandlerId) = [_sourcestr, _refreshDelay, _position] call FUNC(fpsMonitor);
+if (GVAR(EnableFPSCounter)) then  {
+	GVAR(fpsDisplayHandlerId) = [_sourcestr, _refreshDelay, _position] call FUNC(fpsMonitor);
+};
 
 if (GVAR(DebugRPT)) then  {
-	GVAR(fpsRptHandlerId) = [_sourcestr, _refreshDelay] call FUNC(fpsLogToRpt);
+	GVAR(fpsRptHandlerId) = [_sourcestr] call FUNC(dataHandler);
 };

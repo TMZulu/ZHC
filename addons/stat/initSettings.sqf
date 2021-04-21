@@ -38,7 +38,7 @@ private _rptValues = [0,1];
 
 //Log frequency
 [
-    QGVAR(StartDelay),
+    QGVAR(RPTFreq),
     "SLIDER",
     ["RPT Stats Log Frequency","Time between RPT stats logs"],
     ["ZHC Settings","Debug"],
