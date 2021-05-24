@@ -26,12 +26,12 @@
 [
     QGVAR(CycleDelay),
     "SLIDER",
-    ["Cycle Delay","Delay between cycles of adding units to dynamic simulation"],
+    ["Cycle Delay (Seconds)","Delay between cycles of adding units to dynamic simulation"],
     ["ZHC Caching","Base"],
     [0,500,30,0],
     true,
     {},
-    true
+    false
 ] call CBA_settings_fnc_init;
 
 // Group Dynamic sim distance
@@ -44,9 +44,11 @@
     true,
     {
         params ["_value"];
-        "Group" setDynamicSimulationDistance _value;
+        if (!dynamicSimulationSystemEnabled || GVAR(Override)) then {
+            "Group" setDynamicSimulationDistance _value;
+        };
     },
-    true
+    false
 ] call CBA_settings_fnc_init;
 
 // vehicle Dynamic sim distance
@@ -59,9 +61,11 @@
     true,
     {
         params ["_value"];
-        "Vehicle" setDynamicSimulationDistance _value;
+        if (!dynamicSimulationSystemEnabled || GVAR(Override)) then {
+            "Vehicle" setDynamicSimulationDistance _value;
+        };
     },
-    true
+    false
 ] call CBA_settings_fnc_init;
 
 // empty vehicle Dynamic sim distance
@@ -74,9 +78,11 @@
     true,
     {
         params ["_value"];
-        "EmptyVehicle" setDynamicSimulationDistance _value;
+        if (!dynamicSimulationSystemEnabled || GVAR(Override)) then {
+            "EmptyVehicle" setDynamicSimulationDistance _value;
+        };
     },
-    true
+    false
 ] call CBA_settings_fnc_init;
 
 // prop Dynamic sim distance
@@ -89,9 +95,11 @@
     true,
     {
         params ["_value"];
-        "Prop" setDynamicSimulationDistance _value;
+        if (!dynamicSimulationSystemEnabled || GVAR(Override)) then {
+            "Prop" setDynamicSimulationDistance _value;
+        };
     },
-    true
+    false
 ] call CBA_settings_fnc_init;
 
 // isMoving activation multiplier
@@ -104,7 +112,9 @@
     true,
     {
         params ["_value"];
-        "IsMoving" setDynamicSimulationDistanceCoef _value;
+        if (!dynamicSimulationSystemEnabled || GVAR(Override)) then {
+            "IsMoving" setDynamicSimulationDistanceCoef _value;
+        };
     },
-    true
+    false
 ] call CBA_settings_fnc_init;

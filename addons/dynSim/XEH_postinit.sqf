@@ -2,16 +2,19 @@
 
 if (!GVAR(Enabled)) exitwith {};
 
+if (!dynamicSimulationSystemEnabled || GVAR(Override)) then {
+	enableDynamicSimulationSystem true;
 
-enableDynamicSimulationSystem true;
+	"Group" setDynamicSimulationDistance GVAR(GroupDist);
+	"Vehicle" setDynamicSimulationDistance GVAR(VehDist);
+	"EmptyVehicle" setDynamicSimulationDistance GVAR(EmptyDist);
+	"Prop" setDynamicSimulationDistance GVAR(PropDist);
 
-"Group" setDynamicSimulationDistance GVAR(GroupDist);
-"Vehicle" setDynamicSimulationDistance GVAR(VehDist);
-"EmptyVehicle" setDynamicSimulationDistance GVAR(EmptyDist);
-"Prop" setDynamicSimulationDistance GVAR(PropDist);
+	"IsMoving" setDynamicSimulationDistanceCoef GVAR(MoveMult);
 
-"IsMoving" setDynamicSimulationDistanceCoef GVAR(MoveMult);
 
-if (isServer) exitwith {};
+	if (isServer) exitwith {};
 
-player triggerDynamicSimulation true;
+	player triggerDynamicSimulation true;
+
+};

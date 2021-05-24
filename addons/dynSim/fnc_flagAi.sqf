@@ -12,14 +12,23 @@
  * Example:
  * [] call zhc_dynSim_fnc_flagAi
  */
-private ["_excluded"];
+private ["_excluded","_visible"];
 private _grpList = allGroups select {! _x getVariable [QGVAR(DynSet), false] };
 
 {
 	_excluded = [_x] call EFUNC(offload,checkBad);
 	if (!_exluded) then {
-		_x enableDynamicSimulation;
+		
+		_visible = [_x] call FUNC(checkVisible);
+		if (visible) then {
+			_x setVariable [QGVAR(DynSet), false];
+			continue
+		};
+
+		_x enableDynamicSimulation true;
 		_x setVariable [QGVAR(DynSet), true];
+
+		
 	} else {
 		_x setVariable [QGVAR(DynSet), true];
 	};
