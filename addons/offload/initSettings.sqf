@@ -8,7 +8,7 @@
     true,
     {},
     true
-] call CBA_settings_fnc_init;
+] call CBA_fnc_addSetting;
 
 // Offload System Start Delay
 [
@@ -20,7 +20,7 @@
     true,
     {},
     true
-] call CBA_settings_fnc_init;
+] call CBA_fnc_addSetting;
 
 // Cycle Delay
 [
@@ -30,7 +30,7 @@
     ["ZHC Settings","Base"],
     [5,120,DEFAULT_DELAY_CYCLE,0],
     true
-] call CBA_settings_fnc_init;
+] call CBA_fnc_addSetting;
 
 // Check Delay
 [
@@ -40,7 +40,7 @@
     ["ZHC Settings","Base"],
     [1,120,DEFAULT_DELAY_CHECK,0],
     true
-] call CBA_settings_fnc_init;
+] call CBA_fnc_addSetting;
 
 // Offload Delay
 [
@@ -50,7 +50,7 @@
     ["ZHC Settings","Base"],
     [5,120,DEFAULT_DELAY_PER,0],
     true
-] call CBA_settings_fnc_init;
+] call CBA_fnc_addSetting;
 
 // Emergency Offload Delay
 [
@@ -60,7 +60,7 @@
     ["ZHC Settings","Base"],
     [5,120,DEFAULT_DELAY_EMERG,0],
     true
-] call CBA_settings_fnc_init;
+] call CBA_fnc_addSetting;
 
 // Rebalance Delay
 [
@@ -70,7 +70,7 @@
     ["ZHC Settings","Base"],
     [15,600,DEFAULT_DELAY_REBAL,0],
     true
-] call CBA_settings_fnc_init;
+] call CBA_fnc_addSetting;
 
 
 //Naked Unit Failsafe
@@ -85,7 +85,7 @@ private _loadoutValues = [0, 1, 2];
     true,
     {},
     true // needs mission restart
-] call CBA_settings_fnc_init;
+] call CBA_fnc_addSetting;
 
 // Zeus Holding
 [
@@ -94,8 +94,10 @@ private _loadoutValues = [0, 1, 2];
     ["Enable Zeus Holding","Enable Zeus to hold and transfer unit to himself from HC"],
     ["ZHC Settings","Zeus"],
     true,
-    true
-] call CBA_settings_fnc_init;
+    true,
+    {},
+    false
+] call CBA_fnc_addSetting;
 
 // Zeus Hold Limit
 /*[
@@ -105,7 +107,7 @@ private _loadoutValues = [0, 1, 2];
     ["ZHC Settings","Zeus"],
     [0,200,0,0],
     true
-] call CBA_settings_fnc_init;*/
+] call CBA_fnc_addSetting;*/
 
 // Debug Mode
 private _debugOptions = ["Disabled","All Users","Admin/Zeus Only"];
@@ -119,7 +121,7 @@ private _debugValues = [0,1,2];
     true,
     {},
     true // needs mission restart
-] call CBA_settings_fnc_init;
+] call CBA_fnc_addSetting;
 
 
 private _verboseOptions = ["None","Low","Normal","Verbose"];
@@ -134,7 +136,7 @@ private _verboseValues = [0,1,2,3];
     true,
     {},
     true
-] call CBA_settings_fnc_init;
+] call CBA_fnc_addSetting;
 
 // Blacklist Names
 [
@@ -146,7 +148,7 @@ private _verboseValues = [0,1,2,3];
     true,
     {},
     true
-] call CBA_settings_fnc_init;
+] call CBA_fnc_addSetting;
 
 // Blacklist Types
 [
@@ -158,4 +160,4 @@ private _verboseValues = [0,1,2,3];
     true,
     {},
     true
-] call CBA_settings_fnc_init;
+] call CBA_fnc_addSetting;

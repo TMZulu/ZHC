@@ -5,7 +5,7 @@
     "Enable Map FPS Monitor",
     ["ZHC Settings","Debug"],
     true,
-    1,
+    true,
     {},
     true
 ] call CBA_fnc_addSetting;
@@ -16,11 +16,11 @@
     "CHECKBOX",
     ["Log Stats To RPT","Print Statistics to RPT. May cause extra stress."],
     ["ZHC Settings","Debug"],
-    0,
+    false,
     true,
     {},
     true // needs mission restart
-] call CBA_settings_fnc_init;
+] call CBA_fnc_addSetting;
 
 //Log RPT Format
 private _rptOptions = ["Normal","CSV"];
@@ -34,7 +34,7 @@ private _rptValues = [0,1];
     true,
     {},
     false
-] call CBA_settings_fnc_init;
+] call CBA_fnc_addSetting;
 
 //Log frequency
 [
@@ -46,4 +46,4 @@ private _rptValues = [0,1];
     true,
     {},
     true
-] call CBA_settings_fnc_init;
+] call CBA_fnc_addSetting;

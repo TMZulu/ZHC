@@ -8,7 +8,7 @@
     true,
     {},
     true
-] call CBA_settings_fnc_init;
+] call CBA_fnc_addSetting;
 
 // Override mission settings
 [
@@ -20,7 +20,7 @@
     true,
     {},
     true
-] call CBA_settings_fnc_init;
+] call CBA_fnc_addSetting;
 
 // Cycle Delay
 [
@@ -32,7 +32,7 @@
     true,
     {},
     false
-] call CBA_settings_fnc_init;
+] call CBA_fnc_addSetting;
 
 // Group Dynamic sim distance
 [
@@ -49,7 +49,7 @@
         };
     },
     false
-] call CBA_settings_fnc_init;
+] call CBA_fnc_addSetting;
 
 // vehicle Dynamic sim distance
 [
@@ -66,7 +66,7 @@
         };
     },
     false
-] call CBA_settings_fnc_init;
+] call CBA_fnc_addSetting;
 
 // empty vehicle Dynamic sim distance
 [
@@ -83,7 +83,7 @@
         };
     },
     false
-] call CBA_settings_fnc_init;
+] call CBA_fnc_addSetting;
 
 // prop Dynamic sim distance
 [
@@ -100,7 +100,7 @@
         };
     },
     false
-] call CBA_settings_fnc_init;
+] call CBA_fnc_addSetting;
 
 // isMoving activation multiplier
 [
@@ -117,4 +117,4 @@
         };
     },
     false
-] call CBA_settings_fnc_init;
+] call CBA_fnc_addSetting;
