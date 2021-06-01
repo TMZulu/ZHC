@@ -5,7 +5,7 @@
     "Enable Map FPS Monitor",
     ["ZHC Settings","Debug"],
     true,
-    1,
+    true,
     {},
     true
 ] call CBA_fnc_addSetting;
@@ -16,7 +16,7 @@
     "CHECKBOX",
     ["Log Stats To RPT","Print Statistics to RPT. May cause extra stress."],
     ["ZHC Settings","Debug"],
-    0,
+    false,
     true,
     {},
     true // needs mission restart
