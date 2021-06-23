@@ -12,7 +12,7 @@
  * 0: Handler number <NUMBER*>
  *
  * Example:
- * ["Server",15] call mf7_server_fnc_fpsMonitor
+ * ["Server",15] call mf7_stat_fnc_fpsMonitor
  *
  * Public: No
  */
