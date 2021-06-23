@@ -6,7 +6,7 @@ class CfgPatches {
         units[] = {};
         weapons[] = {};
         requiredVersion = REQUIRED_VERSION;
-        requiredAddons[] = {"zhc_main"};
+        requiredAddons[] = {"zhc_main","zhc_offload"};
         author = ECSTRING(main,Author);
         url = ECSTRING(main,URL);
         VERSION_CONFIG;

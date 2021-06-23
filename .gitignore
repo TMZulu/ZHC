@@ -11,3 +11,5 @@ Thumbs.db
 *.exe
 *.vscode*
 *.out
+.vs/*
+
