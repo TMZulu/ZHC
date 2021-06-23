@@ -13,14 +13,14 @@
  * [] call zhc_dynSim_fnc_flagAi
  */
 private ["_excluded","_visible"];
-private _grpList = allGroups select {! _x getVariable [QGVAR(DynSet), false] };
+private _grpList = allGroups select {! (_x getVariable [QGVAR(DynSet), false]) };
 
 {
 	_excluded = [_x] call EFUNC(offload,checkBad);
-	if (!_exluded) then {
+	if (!_excluded) then {
 		
 		_visible = [_x] call FUNC(checkVisible);
-		if (visible) then {
+		if (_visible) then {
 			_x setVariable [QGVAR(DynSet), false];
 			continue
 		};

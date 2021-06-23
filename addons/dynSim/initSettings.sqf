@@ -2,7 +2,7 @@
 [
     QGVAR(Enabled),
     "CHECKBOX",
-    ["Enable Dynamic Simulation support","Enable ZHC support for Dynamic Simulation."],
+    ["Enable Dynamic Simulation support","WARNING: EXPERIMENTAL. Enable ZHC support for Dynamic Simulation."],
     ["ZHC Caching","Base"],
     false,
     true,

@@ -12,9 +12,10 @@ if (!dynamicSimulationSystemEnabled || GVAR(Override)) then {
 
 	"IsMoving" setDynamicSimulationDistanceCoef GVAR(MoveMult);
 
+	[] spawn FUNC(loop);
 
 	if (isServer) exitwith {};
 
 	player triggerDynamicSimulation true;
-
+	
 };

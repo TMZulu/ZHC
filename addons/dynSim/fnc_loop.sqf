@@ -1,7 +1,7 @@
 #include "script_component.hpp"
 /*
  * Author: TMZulu
- * Primary timing loop for dynaim simulation system
+ * Primary timing loop for dynamic simulation system
  *
  * Arguments:
  * NONE

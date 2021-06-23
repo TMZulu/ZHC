@@ -17,7 +17,7 @@ params ["_grp"];
 
 {
 	_cansee = [objNull, "VIEW"] checkVisibility [eyePos player, eyePos _x];
-	if (_cansee) exitwith {true};
+	if (_cansee == 0) exitwith {true};
 } forEach units _grp;
 
 false
