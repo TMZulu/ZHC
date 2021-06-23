@@ -14,6 +14,10 @@
  */
 if (!([player] call FUNC(isZeus))) exitwith {};//if not zeus, exit
 if (!GVAR(EnableZeusHolding)) exitWith {};//if holding function disabled exit
+if (isNil QGVAR(DataIndex)) exitWith {//User is not a Curator present at mission start
+    [] call FUNC(initZeus);
+    systemChat "Zeus permissions were incorrect. Please try again.";
+};
 
 private ['_lead','_groupMoving','_groupIndex'];
 
