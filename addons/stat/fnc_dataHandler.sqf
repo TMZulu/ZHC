@@ -10,22 +10,22 @@
  * NONE
  *
  * Example:
- * [] call mf7_server_fnc_dataHandler
+ * [] call mf7_stat_fnc_dataHandler
  *
  */
 
-sleep 4;
+sleep 2;
 GVAR(Stats)= [];
 for "_i" from 0 to count EGVAR(offload,HeadlessArray) do {
-	GVAR(Stats) append [];
+	GVAR(Stats) pushBack [];
 };
 
 
 QGVAR(Data) addPublicVariableEventHandler {
 	params ["_var", "_data", "_target"];
-	_index = (_data select 0) + 1;
-	if (_index > count GVAR(Stats) - 1) then {
-		GVAR(Stats) append _data select 1;
+	_index = (_data select 0);
+	if (_index > (count GVAR(Stats) - 1)) then {
+		GVAR(Stats) pushback (_data select 1);
 	}else {
 		GVAR(Stats) set [_index, _data select 1];
 	};

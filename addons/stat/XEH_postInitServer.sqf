@@ -5,6 +5,12 @@ if (GVAR(EnableFPSCounter)) then {
     GVAR(fpsDisplayHandlerId) = ["Server",10] call FUNC(fpsMonitor);
 };
 
+if (GVAR(DebugRPT) && EGVAR(offload,Enabled)) then  {
+	GVAR(fpsRptHandlerId) = [] spawn FUNC(dataHandler);
+    ["Server", GVAR(RPTFreq)] call FUNC(fpsLogToRpt);
+};
+
+
 mf7_SERVER_INIT = true;
 
 

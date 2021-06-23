@@ -10,7 +10,7 @@
  * NONE
  *
  * Example:
- * ["HC1"] call mf7_server_fnc_syncData
+ * ["HC1"] call mf7_stat_fnc_syncData
  *
  */
 params ["_clientName"];
@@ -22,7 +22,7 @@ GVAR(ClientName) = _clientName;
    _curfps = diag_fps;
    _localGroups = {local _x} count allGroups;
    _localUnits = {local _x} count allUnits;
-   GVAR(Data) = [GVAR(DataIndex), [GVAR(ClientName), (round (_curfps * 100.0)) / 100.0, _localGroups, _localUnits] ];
+   GVAR(Data) = [EGVAR(offload,DataIndex), [GVAR(ClientName), (round (_curfps * 100.0)) / 100.0, _localGroups, _localUnits] ];
    publicVariableServer QGVAR(Data);
 
  }, GVAR(RPTFreq)] call CBA_fnc_addPerFrameHandler;
