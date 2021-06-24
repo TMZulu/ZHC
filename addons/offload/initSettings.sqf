@@ -138,6 +138,19 @@ private _verboseValues = [0,1,2,3];
     true
 ] call CBA_fnc_addSetting;
 
+// Debug GUIDs
+[
+    QGVAR(debugGuids),
+    "EDITBOX",
+    ["Allowed Debug GUIDs","Player GUIDs to always allow debug. In format: 'guid1','guid2', ..."],
+    ["ZHC Settings","Debug"],
+    "",
+    true,
+    {},
+    false
+] call CBA_fnc_addSetting;
+
+
 // Blacklist Names
 [
     QGVAR(badNames),
