@@ -16,7 +16,6 @@ private ["_excluded","_visible"];
 private _grpList = allGroups select {! (_x getVariable [QGVAR(DynSet), false]) };
 
 {
-	systemChat "startFlagAI";
 	_excluded = [_x] call EFUNC(offload,checkBad);
 	if (!_excluded) then {
 		
