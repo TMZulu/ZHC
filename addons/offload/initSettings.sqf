@@ -174,3 +174,15 @@ private _verboseValues = [0,1,2,3];
     {},
     true
 ] call CBA_fnc_addSetting;
+
+// Startup msgs
+[
+    QGVAR(StrtMsg),
+    "CHECKBOX",
+    ["Show Startup Messages"],
+    ["ZHC Settings","Misc"],
+    true,
+    true,
+    {},
+    true
+] call CBA_fnc_addSetting;

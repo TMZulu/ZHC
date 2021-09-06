@@ -20,8 +20,9 @@ private ["_scriptHandle","_rebalanceTime"];
 _rebalanceTime = time + 480;
 
 sleep GVAR(StartDelay);
-
-["ZHC Initialized"] remoteExec ["hint", -2, true];
+if (GVAR(StrtMsg)) then {
+    ["ZHC Initialized"] remoteExec ["hint", -2, true];
+};
 
 while {GVAR(Enabled)} do {
     BROADCAST_INFO("Cycle Start");
