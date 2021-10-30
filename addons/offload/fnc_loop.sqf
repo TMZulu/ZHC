@@ -31,7 +31,7 @@ while {GVAR(Enabled)} do {
     waitUntil {sleep 0.5; GVAR(FastTransferring) == false};
 
     BROADCAST_INFO("Rebalance Check");
-    if (GVAR(RebalanceDelay) != 0 && time >= _rebalanceTime && count GVAR(HeadlessArray) > 1) then {  //rebalance timer
+    if (GVAR(RebalanceDelay) != 0 && time >= _rebalanceTime && count GVAR(HeadlessArray) > 1 && GVAR(EnableRebal)) then {  //rebalance timer
 
         _scriptHandle = [] spawn FUNC(rebalance);
         waitUntil {sleep 1; scriptDone _scriptHandle};//wait until rebalancing complete
