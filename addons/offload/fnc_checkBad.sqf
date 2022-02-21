@@ -20,6 +20,8 @@ private _exempt = false;
 if (GVAR(badTypes) != "") then {_badTypes = _badTypes + (GVAR(badTypes) splitString "', ");};
 if (GVAR(badNames) != "") then {_badNames = _badNames + (GVAR(badNames) splitString "', ");};
 
+if (_group getVariable [GVAR(blacklisted), false]) exitWith {true};
+
 //check if held by zeus
 //if (_group in GVAR(ZeusGroups)) exitWith {true};
 if (GVAR(ZeusGrpData) findIf {_x select 0 == _group} != -1) exitWith {true};
