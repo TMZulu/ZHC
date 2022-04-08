@@ -31,6 +31,8 @@ publicVariable QGVAR(ZeusIds);
 
 GVAR(DataIndex) = _index;
 
+[] call EFUNC(directSpawn,grpSpawnHandler);
+
 //Clear Zeus Init Eventhandlers
 {
     _x removeEventHandler ["CuratorObjectRegistered", _x getVariable [QGVAR(ZeusInitIndex), 0]];
