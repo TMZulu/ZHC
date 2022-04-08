@@ -5,7 +5,7 @@ if (GVAR(EnableFPSCounter)) then {
     GVAR(fpsDisplayHandlerId) = ["Server",10] call FUNC(fpsMonitor);
 };
 
-if (GVAR(DebugRPT) && EGVAR(offload,Enabled)) then  {
+if (GVAR(DebugRPT) && EGVAR(offload,Enabled) && isMultiplayer) then  {
 	GVAR(fpsRptHandlerId) = [] spawn FUNC(dataHandler);
     ["Server", GVAR(RPTFreq)] call FUNC(fpsLogToRpt);
 };
