@@ -37,12 +37,10 @@ BROADCAST_INFO("Started Transferring");
     _lead = leader _groupMoving;
     _size = count (units _groupMoving);
     _leadOwner = owner _lead;
-//    _excluded = [_groupMoving] call FUNC(checkBad);
     _vehicle = vehicle _lead;
     //_driver = driver _vehicle;
 
-    //if (!_excluded) then {
-
+ 
     //check garrison flag
     if ((_groupMoving getVariable ["Achilles_var_inGarrison", false]) || (_groupMoving getVariable ["zen_ai_garrisoned", false]) ||  (_groupMoving getVariable ["ace_ai_garrisoned", false])) then {
         _groupGarrisoned = true;
@@ -54,7 +52,6 @@ BROADCAST_INFO("Started Transferring");
         diag_log format["WARNING: ZHC Main HC Offload Loop. Group:%1 already offloaded but in TransferQueue",str _groupMoving];
         BROADCAST_WARN_1("Group:%1 already offloaded but in TransferQueue",str _groupMoving);
     };
-    //GVAR(HeadlessGroups) pushBack _groupMoving;
 
     _vehicle lock true;
     sleep (GVAR(OffloadDelay)/3);
@@ -117,7 +114,6 @@ BROADCAST_INFO("Started Transferring");
         _groupMoving setVariable [QGVAR(OwningClient), (GVAR(HeadlessArray) select _hcIndex)];
     };
 
-//    };
 
 } forEach _groupArray;
 BROADCAST_INFO("Completed Transferring");
