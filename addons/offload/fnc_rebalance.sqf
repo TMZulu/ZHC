@@ -151,7 +151,7 @@ while {!_balanced} do {
                 _rebalanceRecursiveErrorCnt = 0;
                 break;
             } else {
-                INC(_rebalanceRecursiveErrorCnt);
+                INC(_rebalanceRecursiveErrorCnt)
             };
             continue;
         }

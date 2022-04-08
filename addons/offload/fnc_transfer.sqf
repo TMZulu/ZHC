@@ -32,6 +32,7 @@ BROADCAST_INFO("Started Transferring");
 
 {
     try {
+        waitUntil {sleep 0.1; !GVAR(ProcessingDisconnect)};
         waitUntil {sleep 0.1; !GVAR(FastTransferring)};//hold in case of emergency dump or fast transfer
 
         _groupMoving = _x;
@@ -104,6 +105,7 @@ BROADCAST_INFO("Started Transferring");
 
         //GVAR(HeadlessGroups) pushBack _groupMoving;
         //GVAR(HeadlessGroupOwners) pushback (GVAR(HeadlessArray) select _hcIndex);
+        waitUntil {sleep 0.1; !GVAR(ProcessingDisconnect)};
 
         GVAR(HeadlessGrpData) pushBack ([_groupMoving, GVAR(HeadlessArray) select _hcIndex]);
 

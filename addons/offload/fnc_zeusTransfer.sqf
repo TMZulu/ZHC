@@ -74,7 +74,8 @@ GVAR(FastTransferring) = true;
             };
         };
 
-        _hcIndex = GVAR(HeadlessIds) find _leadOwner;
+        waitUntil {sleep 0.1; !GVAR(ProcessingDisconnect)}; //prevent some desync issues
+        
         _groupIndex = GVAR(HeadlessGrpData) findIf {_x select 0 == _groupMoving};
         if (_groupIndex != -1) then {
             GVAR(HeadlessGrpData) deleteAt _groupIndex;
