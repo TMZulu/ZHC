@@ -20,6 +20,8 @@ private _dumpGroup = [];
 private _debugEnabled = false;
 if (GVAR(DebugMode) > 0) then { _debugEnabled = true; };
 
+GVAR(ProcessingDisconnect) = true; //global flag
+
 if (_unit in GVAR(HeadlessArray)) exitWith {
     _index = GVAR(HeadlessArray) find _unit;
     GVAR(HeadlessLocalCounts) deleteAt _index;
@@ -70,3 +72,5 @@ if (_unit in GVAR(ZeusArray)) exitWith {
         [_dumpGroup, false] spawn FUNC(emergencyDump);
     };
 };
+
+GVAR(ProcessingDisconnect) = false;
