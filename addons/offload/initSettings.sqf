@@ -28,7 +28,7 @@
     "SLIDER",
     ["Cycle Delay","Time delay between offload cycles"],
     ["ZHC Settings","Base"],
-    [5,120,DEFAULT_DELAY_CYCLE,0],
+    [5,600,DEFAULT_DELAY_CYCLE,0],
     true
 ] call CBA_fnc_addSetting;
 
@@ -38,7 +38,7 @@
     "SLIDER",
     ["Check Delay","Time delay between checking for untransferred groups"],
     ["ZHC Settings","Base"],
-    [1,120,DEFAULT_DELAY_CHECK,0],
+    [1,600,DEFAULT_DELAY_CHECK,0],
     true
 ] call CBA_fnc_addSetting;
 
@@ -48,7 +48,7 @@
     "SLIDER",
     ["Offload Delay","Delay between offloading each group"],
     ["ZHC Settings","Base"],
-    [5,120,DEFAULT_DELAY_PER,0],
+    [5,600,DEFAULT_DELAY_PER,0],
     true
 ] call CBA_fnc_addSetting;
 
@@ -62,13 +62,25 @@
     true
 ] call CBA_fnc_addSetting;
 
+// Enable Rebalancing
+[
+    QGVAR(EnableRebal),
+    "CHECKBOX",
+    ["Enable Rebalancing", "Enables rebalancing system"],
+    ["ZHC Settings","Base"],
+    true,
+    true,
+    {},
+    true
+] call CBA_fnc_addSetting;
+
 // Rebalance Delay
 [
     QGVAR(RebalanceDelay),
     "SLIDER",
     ["Rebalancing Delay","Minimum delay between HC rebalance cycles"],
     ["ZHC Settings","Base"],
-    [15,600,DEFAULT_DELAY_REBAL,0],
+    [15,60000,DEFAULT_DELAY_REBAL,0],
     true
 ] call CBA_fnc_addSetting;
 
@@ -170,6 +182,18 @@ private _verboseValues = [0,1,2,3];
     ["Blacklisted Classnames","Blacklisted Classnames. In format: 'name1','name2', ..."],
     ["ZHC Settings","Blacklist"],
     "",
+    true,
+    {},
+    true
+] call CBA_fnc_addSetting;
+
+// Startup msgs
+[
+    QGVAR(StrtMsg),
+    "CHECKBOX",
+    ["Show Startup Messages"],
+    ["ZHC Settings","Misc"],
+    true,
     true,
     {},
     true

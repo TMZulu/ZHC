@@ -19,6 +19,8 @@ private _debugEnabled = false;
 //disconnect Eventhandler
 addMissionEventHandler ["HandleDisconnect", { call FUNC(handleDisconnect) }];
 
+GVAR(ProcessingDisconnect) = false;
+
 if (GVAR(DebugMode) != 0) then { _debugEnabled = true; };
 
 //All mission groups add to Transfer Queue

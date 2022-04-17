@@ -17,3 +17,4 @@ PREP(syncData);
 PREP(transfer);
 PREP(zeusHold);
 PREP(zeusTransfer);
+PREP(getLeastLoaded);

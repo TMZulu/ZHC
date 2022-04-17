@@ -58,12 +58,16 @@ if (hasInterface) then {
     } forEach allCurators;
 
     GVAR(Debugging) = false;
-    systemChat "ZHC Initialized";
+    if (GVAR(StrtMsg)) then {
+        systemChat "ZHC Initialized";
+    };
 };
 
 //Headless
 if(!isServer && !hasInterface) then {
-    BROADCAST_INFO_1("%1 Initializing",player);
+    if (GVAR(StrtMsg)) then {
+        BROADCAST_INFO_1("%1 Initializing",player);
+    };
     //set up arrays and variables
 
     GVAR(DataIndex) = -1;
