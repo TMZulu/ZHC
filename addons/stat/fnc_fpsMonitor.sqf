@@ -21,7 +21,7 @@ params ["_clientName",["_refreshDelay",10],["_position",0]];
 GVAR(fpsMarker) = createMarker [format ["fpsmarker%1", _clientName], [500 + worldSize, 500 + (500 * _position)]];
 if (GVAR(MapFpsPos) == 1) then {
   GVAR(fpsMarker) setMarkerPos [500, 500 + (500 * _position)];
-}
+};
 
 GVAR(fpsMarker) setMarkerType "mil_start";
 GVAR(fpsMarker) setMarkerSize [0.7, 0.7];
