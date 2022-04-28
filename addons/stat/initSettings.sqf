@@ -10,6 +10,33 @@
     true
 ] call CBA_fnc_addSetting;
 
+//Map fps display location
+private _mapFpsOptions = ["Bottom Right","Bottom Left"];
+private _mapFpsValues = [0,1];
+[
+    QGVAR(MapFpsPos),
+    "LIST",
+    ["Position for map FPS markers","Where to display map markers for FPS and Unit Counts"],
+    ["ZHC Settings","Debug"],
+    [_mapFpsValues,_mapFpsOptions,0],
+    true,
+    {},
+    true
+] call CBA_fnc_addSetting;
+
+//Map markers vertical spacing modifier
+// [
+//     QGVAR(RPTFreq),
+//     "SLIDER",
+//     ["Map FPS Vertical Spacing","Modifier for vertical spacing of map FPS markers(% of total map height)"],
+//     ["ZHC Settings","Debug"],
+//     [.01 , 0.25, 0.016276, 2, true],
+//     true,
+//     {},
+//     true
+// ] call CBA_settings_fnc_init;
+
+
 // Log to RPT
 [
     QGVAR(DebugRPT),
@@ -85,3 +112,6 @@ private _rptValues = [0,1];
     {},
     true
 ] call CBA_settings_fnc_init;
+
+
+
