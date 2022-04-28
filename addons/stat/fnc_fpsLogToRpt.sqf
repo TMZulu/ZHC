@@ -32,7 +32,7 @@ GVAR(clientRptName) = _clientName;
 		_strArray pushBack format ["%1: %2 fps, %3 local groups, %4 local units", GVAR(clientRptName), (round (_curfps * 100.0)) / 100.0, _localgroups, _localunits];
 		private _failed = false;
 		{
-			if (_x isEqualType []) then {
+			if (_x isEqualType [] && (count _x >= 4)) then {
 				_strArray pushBack format ["|| %1: %2 fps, %3 local groups, %4 local units", _x select 0, _x select 1, _x select 2, _x select 3];
 			} else {
 				_failed = true;
@@ -45,7 +45,7 @@ GVAR(clientRptName) = _clientName;
 		if (_failed) then {
 			private _cleanArray = [];
 			{
-				if (_x isEqualType []) then {
+				if (_x isEqualType [] && (count _x >= 4)) then {
 					_cleanArray pushBack _x;
 				};
 			} forEach GVAR(Stats);
@@ -59,7 +59,7 @@ GVAR(clientRptName) = _clientName;
 		
 		private _failed = false;
 		{
-			if (_x isEqualType []) then {
+			if (_x isEqualType [] && (count _x >= 4)) then {
 				_strArray pushBack format ["%1;%2;%3;%4;", _x select 0, _x select 1, _x select 2, _x select 3];
 			} else {
 				_failed = true;
@@ -71,7 +71,7 @@ GVAR(clientRptName) = _clientName;
 		if (_failed) then {
 			private _cleanArray = [];
 			{
-				if (_x isEqualType []) then {
+				if (_x isEqualType [] && (count _x >= 4)) then {
 					_cleanArray pushBack _x;
 				};
 			} forEach GVAR(Stats);
