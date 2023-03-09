@@ -15,5 +15,5 @@
 private _group = _this select 0;
 
 {
-    _x forceSpeed 0;
+    _x disableAI "PATH";
 } forEach units _groupMoving;
