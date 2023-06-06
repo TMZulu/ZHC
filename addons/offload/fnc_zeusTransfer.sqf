@@ -36,7 +36,7 @@ GVAR(FastTransferring) = true;
         _vehicle = vehicle _lead;
         _vehicle lock true;
         //check garrison flag
-        if ((_groupMoving getVariable ["Achilles_var_inGarrison", false]) || (_groupMoving getVariable ["zen_ai_garrisoned", false]) ||  (_groupMoving getVariable ["ace_ai_garrisoned", false])) then {
+        if ((_groupMoving getVariable ["Achilles_var_inGarrison", false]) || (_lead getVariable ["zen_ai_garrisoned", false]) || (_groupMoving getVariable ["ace_ai_garrisoned", false])) then {
             _groupGarrisoned = true;
         } else {
             _groupGarrisoned = false;
@@ -75,7 +75,7 @@ GVAR(FastTransferring) = true;
         };
 
         waitUntil {sleep 0.1; !GVAR(ProcessingDisconnect)}; //prevent some desync issues
-        
+
         _groupIndex = GVAR(HeadlessGrpData) findIf {_x select 0 == _groupMoving};
         if (_groupIndex != -1) then {
             GVAR(HeadlessGrpData) deleteAt _groupIndex;
