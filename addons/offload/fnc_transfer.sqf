@@ -42,9 +42,9 @@ BROADCAST_INFO("Started Transferring");
         _vehicle = vehicle _lead;
         //_driver = driver _vehicle;
 
-    
+
         //check garrison flag
-        if ((_groupMoving getVariable ["Achilles_var_inGarrison", false]) || (_groupMoving getVariable ["zen_ai_garrisoned", false]) ||  (_groupMoving getVariable ["ace_ai_garrisoned", false])) then {
+        if ((_groupMoving getVariable ["Achilles_var_inGarrison", false]) || (_lead getVariable ["zen_ai_garrisoned", false]) ||  (_groupMoving getVariable ["ace_ai_garrisoned", false]) || !(_lead checkAIFeature "PATH")) then {
             _groupGarrisoned = true;
         } else {
             _groupGarrisoned = false;
@@ -79,6 +79,8 @@ BROADCAST_INFO("Started Transferring");
         sleep (GVAR(OffloadDelay)/3);
         //reapply garrison
         if (_groupGarrisoned) then {
+            waitUntil {sleep 0.5; (groupOwner _groupMoving) == (GVAR(HeadlessIds) select _hcIndex)};
+            BROADCAST_INFO_1("Garrison reapplied to: %1", str _groupMoving);
             [_groupMoving] remoteExecCall [QFUNC(reGarrison), GVAR(HeadlessIds) select _hcIndex];
         };
 

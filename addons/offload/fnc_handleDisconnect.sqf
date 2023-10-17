@@ -73,4 +73,6 @@ if (_unit in GVAR(ZeusArray)) exitWith {
     };
 };
 
+BROADCAST_INFO("End Processing Disconnect");
+
 GVAR(ProcessingDisconnect) = false;
