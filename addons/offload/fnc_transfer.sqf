@@ -79,6 +79,8 @@ BROADCAST_INFO("Started Transferring");
         sleep (GVAR(OffloadDelay)/3);
         //reapply garrison
         if (_groupGarrisoned) then {
+            waitUntil {sleep 0.5; (groupOwner _groupMoving) == (GVAR(HeadlessIds) select _hcIndex)};
+            BROADCAST_INFO_1("Garrison reapplied to: %1", str _groupMoving);
             [_groupMoving] remoteExecCall [QFUNC(reGarrison), GVAR(HeadlessIds) select _hcIndex];
         };
 
