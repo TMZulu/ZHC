@@ -24,15 +24,17 @@ if (GVAR(StrtMsg)) then {
     ["ZHC Initialized"] remoteExec ["hint", -2, true];
 };
 
+INFO("ZHC Initialized");
+
 while {GVAR(Enabled)} do {
     BROADCAST_INFO("Cycle Start");
+    INFO("ZHC Cycle Start");
     waitUntil {sleep 2; count GVAR(HeadlessArray) > 0};//make sure there is a headless client available
 
     waitUntil {sleep 0.5; GVAR(FastTransferring) == false};
 
     BROADCAST_INFO("Rebalance Check");
     if (GVAR(RebalanceDelay) != 0 && time >= _rebalanceTime && count GVAR(HeadlessArray) > 1 && GVAR(EnableRebal)) then {  //rebalance timer
-
         _scriptHandle = [] spawn FUNC(rebalance);
         waitUntil {sleep 1; scriptDone _scriptHandle};//wait until rebalancing complete
         _rebalanceTime = time + GVAR(RebalanceDelay);
@@ -47,7 +49,6 @@ while {GVAR(Enabled)} do {
     waitUntil {sleep 0.5; GVAR(FastTransferring) == false};
 
     if (count GVAR(TransferQueue) > 0) then {
-
         _scriptHandle = [] spawn FUNC(transfer);//call main offloading script
         waitUntil {sleep 1; scriptDone _scriptHandle};//wait until offloading complete
     };
