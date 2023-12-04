@@ -33,6 +33,7 @@ if (isServer) then {
     publicVariable QGVAR(HeadlessLocalCounts);
 
     GVAR(FastTransferring) = false;
+    GVAR(EmergencyTransferring) = false;
     GVAR(UnitLoadout) = [];
 
     [] call FUNC(initServer);
