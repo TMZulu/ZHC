@@ -14,7 +14,6 @@
  */
 private _group = _this select 0;
 
-[format ["Garrison called on %1", name player]] remoteExec ["systemChat", -2];
 
 {
     _x disableAI "PATH";
