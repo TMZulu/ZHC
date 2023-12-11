@@ -10,3 +10,8 @@ trim_trailing_whitespace = true
 
 [*.md]
 trim_trailing_whitespace = false
+
+[*.sqf]
+block_comment_start = /*
+block_comment = *
+block_comment_end = */
