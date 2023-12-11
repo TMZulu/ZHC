@@ -1,5 +1,5 @@
 #define DEBUG_SYNCHRONOUS
-#include "\x\cba\addons\main\script_macros_common.hpp"
+#include "script_macros_zhc.hpp"//ZHC Macros
 
 #define RGB_GREEN 0, 0.5, 0, 1
 #define RGB_BLUE 0, 0, 1, 1
@@ -28,5 +28,4 @@
 #define DGVAR(varName) if (isNil "ZHC_DEBUG_NAMESPACE") then { ZHC_DEBUG_NAMESPACE = []; }; if (!(QGVAR(varName) in ZHC_DEBUG_NAMESPACE)) then { ZHC_DEBUG_NAMESPACE pushBack QGVAR(varName); }; GVAR(varName)
 #define DVAR(varName) if (isNil "ZHC_DEBUG_NAMESPACE") then { ZHC_DEBUG_NAMESPACE = []; }; if (!(QUOTE(varName) in ZHC_DEBUG_NAMESPACE)) then { ZHC_DEBUG_NAMESPACE pushBack QUOTE(varName); }; varName
 
-#include "script_macros_additional.hpp"//ZHC Macros
 #include "script_debug.hpp"

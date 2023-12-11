@@ -1,5 +1,7 @@
+#include "\x\cba\addons\main\script_macros_common.hpp"
+
 /*
-    Header: script_macros_additional.hpp
+    Header: script_macros_zhc.hpp
 
     Description:
         A general set of macros for use in zhc
@@ -84,23 +86,29 @@ Author:
 #define SEND_CHAT(MESSAGE) if(GVAR(Verbosity) == 3) then { \
     if (hasInterface) then { \
         systemChat MESSAGE; \
+        INFO(MESSAGE) \
     } else { \
         [MESSAGE] remoteExec ["systemChat", -2]; \
+        INFO(MESSAGE) \
     }; \
 } \
 
 #define SEND_CHAT_WARN(MESSAGE) if(GVAR(Verbosity) >= 2) then { \
     if (hasInterface) then { \
         systemChat MESSAGE; \
+        WARNING(MESSAGE) \
     } else { \
         [FORMAT_1("Warning: %1",MESSAGE)] remoteExec ["systemChat", -2]; \
+        WARNING(MESSAGE) \
     }; \
 } \
 
 #define SEND_CHAT_ERROR(MESSAGE) if(GVAR(Verbosity) >= 1) then { \
     if (hasInterface) then { \
         systemChat MESSAGE; \
+        ERROR(MESSAGE) \
     } else { \
         [FORMAT_1("ERROR: %1",MESSAGE)] remoteExec ["systemChat", -2]; \
+        ERROR(MESSAGE) \
     }; \
 } \

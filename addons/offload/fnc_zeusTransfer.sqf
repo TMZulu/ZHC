@@ -51,25 +51,15 @@ GVAR(FastTransferring) = true;
 	};
 
 	_groupMoving setGroupOwner _who;
-
 	    // reapply garrison
 	if (_groupGarrisoned) then {
-		waitUntil {
-			sleep 0.5;
-			((groupOwner _groupMoving) == (GVAR(HeadlessIds) select _hcIndex)) || (isNull _groupMoving) || GVAR(EmergencyTransferring)
-		};
-		if (isNull _groupMoving) then {
-			continue
-		};
-		if (GVAR(EmergencyTransferring)) exitWith {
-			BROADCAST_WARN("Stopping Transferring due to emergency dump");
-			WARNING("Stopping Transferring due to emergency dump");
-		};
-		BROADCAST_INFO_1("Garrison reapplied to: %1", str _groupMoving);
-		[_groupMoving] remoteExecCall [QFUNC(reGarrison), GVAR(HeadlessIds) select _hcIndex];
+		BROADCAST_INFO_1("Reapplying garrison to: %1", str _groupMoving);
+		[_groupMoving] remoteExecCall [QFUNC(reGarrison), _who];
 	};
-	BROADCAST_INFO_1("Transferred to Zeus: %1", str _groupMoving);
 	sleep (GVAR(OffloadDelay)/2);
+
+	BROADCAST_INFO_1("Transferred to Zeus: %1", str _groupMoving);
+
 	if (isNull _groupMoving) then {
 		continue
 	};
