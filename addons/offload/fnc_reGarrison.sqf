@@ -23,7 +23,7 @@ waitUntil {
 
 if (time >= _timeout) exitWith {
 	INFO("Regarrisoning group timed out");
-}
+};
 
 if (isNull _group || !local _group) exitWith {};
 
