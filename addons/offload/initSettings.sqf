@@ -105,7 +105,7 @@ private _loadoutValues = [0, 1, 2];
 	[_loadoutValues, _loadoutOptions, 1],
 	true,
 	{},
-	    true // needs mission restart
+	false // needs mission restart
 ] call CBA_fnc_addSetting;
 
 // Zeus Holding
@@ -141,7 +141,7 @@ private _debugValues = [0, 1, 2];
 	[_debugValues, _debugOptions, 2],
 	true,
 	{},
-	    true // needs mission restart
+	true // needs mission restart
 ] call CBA_fnc_addSetting;
 
 private _verboseOptions = ["None", "Low", "Normal", "Verbose"];
@@ -155,7 +155,7 @@ private _verboseValues = [0, 1, 2, 3];
 	[_verboseValues, _verboseOptions, 0],
 	true,
 	{},
-	true
+	false
 ] call CBA_fnc_addSetting;
 
 // Debug GUIDs
@@ -179,7 +179,7 @@ private _verboseValues = [0, 1, 2, 3];
 	"'ignore'",
 	true,
 	{},
-	true
+	false
 ] call CBA_fnc_addSetting;
 
 // Blacklist Types
@@ -191,7 +191,19 @@ private _verboseValues = [0, 1, 2, 3];
 	"",
 	true,
 	{},
-	true
+	false
+] call CBA_fnc_addSetting;
+
+// Blacklist all vehicles
+[
+	QGVAR(BlacklistAllVehicles),
+	"CHECKBOX",
+	["Blacklist all vehicles", "Prevents offloading of all vehicles"],
+	["ZHC Settings", "Blacklist"],
+	false,
+	true,
+	{},
+	false
 ] call CBA_fnc_addSetting;
 
 // Startup msgs
