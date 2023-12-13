@@ -24,6 +24,7 @@ if (GVAR(DebugMode) > 0) then {
 };
 
 GVAR(FastTransferring) = true;
+INFO('FastTransferring set');
 
 {
 	_groupMoving = _x;
@@ -54,7 +55,7 @@ GVAR(FastTransferring) = true;
 	    // reapply garrison
 	if (_groupGarrisoned) then {
 		BROADCAST_INFO_1("Reapplying garrison to: %1", str _groupMoving);
-		[_groupMoving] remoteExecCall [QFUNC(reGarrison), _who];
+		[_groupMoving] remoteExec [QFUNC(reGarrison), _who];
 	};
 	sleep (GVAR(OffloadDelay)/2);
 
@@ -112,3 +113,4 @@ GVAR(FastTransferring) = true;
 } forEach GVAR(ZeusIds);
 
 GVAR(FastTransferring) = false;
+INFO('FastTransferring unset');

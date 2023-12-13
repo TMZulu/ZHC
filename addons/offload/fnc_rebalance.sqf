@@ -1,169 +1,184 @@
 #include "script_component.hpp"
 /*
- * Author: TMZulu
- * Rebalance Headless Clients
- *
- * Arguments:
- * NONE
- *
- * Return Value:
- * NONE
- *
- * Example:
- * [] call zhc_offload_fnc_rebalance
+	 * Author: TMZulu
+	 * Rebalance Headless Clients
+	 *
+	 * Arguments:
+	 * NONE
+	 *
+	 * Return Value:
+	 * NONE
+	 *
+	 * Example:
+	 * [] call zhc_offload_fnc_rebalance
  */
 if (GVAR(HeadlessArray) isEqualTo []) exitWith {
-    BROADCAST_WARN("Rebalance called without an HC connected");
+	BROADCAST_WARN("Rebalance called without an HC connected");
 };
 
 BROADCAST_INFO("Rebalance started");
-private ["_maxHC","_minHC","_diff","_i","_groupMoving","_groupIndex","_prevCountMax","_prevCountMin", "_minHCName","_maxHCName","_HCid","_groupGarrisoned","_group","_owner", "_scriptID"];
+private ["_maxHC", "_minHC", "_diff", "_i", "_groupMoving", "_groupIndex", "_prevCountMax", "_prevCountMin", "_minHCName", "_maxHCName", "_HCid", "_groupGarrisoned", "_group", "_owner", "_scriptID"];
 private _balanced = false;
 
 private _rebalanceRecursiveErrorCnt = 0;
 
-//settings variable conversion(optimisation)
+// settings variable conversion(optimisation)
 private _transferLoadout = GVAR(TransferLoadout);
 private _debugEnabled = false;
-if (GVAR(DebugMode) > 0) then { _debugEnabled = true; };
+if (GVAR(DebugMode) > 0) then {
+	_debugEnabled = true;
+};
 
+while { !_balanced } do {
+	if (GVAR(EmergencyTransferring)) exitWith {
+		BROADCAST_WARN("Stopping Rebalance due to emergency dump");
+		WARNING("Stopping Rebalance due to emergency dump");
+	};
+	waitUntil {
+		sleep 0.1;
+		!GVAR(FastTransferring)
+	};
 
-while {!_balanced} do {
+	{
+		_HCid = _x;
+		GVAR(HeadlessLocalCounts) set [_forEachIndex, (count (allUnits select {
+			owner _x == _HCid
+		}))];
+	} forEach GVAR(HeadlessIds);
 
-    if (GVAR(EmergencyTransferring)) exitWith {
-        BROADCAST_WARN("Stopping Rebalance due to emergency dump");
-        WARNING("Stopping Rebalance due to emergency dump");
-    };
-    waitUntil {sleep 0.1; !GVAR(FastTransferring)};
+	   // get most loaded
+	_maxHC = 0;
+	_prevCountMax = 0;
+	{
+		if ((_forEachIndex == 0) || (_x > _prevCountMax)) then {
+			_maxHC = _forEachIndex;
+			_prevCountMax = _x;
+		};
+	} forEach GVAR(HeadlessLocalCounts);
 
-    {
-        _HCid = _x;
-        GVAR(HeadlessLocalCounts) set [_forEachIndex, (count (allUnits select { owner _x == _HCid }))];
-    } forEach GVAR(HeadlessIds);
+	   // get least loaded
+	_minHC = 0;
+	_prevCountMin = 0;
+	{
+		if ((_forEachIndex == 0) || (_x < _prevCountMin)) then {
+			_minHC = _forEachIndex;
+			_prevCountMin = _x;
+		};
+	} forEach GVAR(HeadlessLocalCounts);
 
-    //get most loaded
-    _maxHC = 0;
-    _prevCountMax = 0;
-    {
-        if ((_forEachIndex == 0) || (_x > _prevCountMax)) then {
-            _maxHC = _forEachIndex;
-            _prevCountMax = _x;
-        };
-    } forEach GVAR(HeadlessLocalCounts);
+	_diff = (_prevCountMax - _prevCountMin);
 
-    //get least loaded
-    _minHC = 0;
-    _prevCountMin = 0;
-    {
-        if ((_forEachIndex == 0) || (_x < _prevCountMin)) then {
-            _minHC = _forEachIndex;
-            _prevCountMin = _x;
-        };
-    } forEach GVAR(HeadlessLocalCounts);
+	if (_diff > 1) then {
+		_scriptID  = [] spawn FUNC(cleanup)// clear empty groups
+		 waitUntil {
+			sleep 1;
+			scriptDone _scriptID
+		}// wait till clean finishes
 
-    _diff = (_prevCountMax - _prevCountMin);
+		_maxHCName = GVAR(HeadlessArray) select _maxHC;
+		_minHCName = GVAR(HeadlessArray) select _minHC;
 
-    if (_diff > 1) then {
-        _scriptID  = [] spawn FUNC(cleanup);//clear empty groups
-        waitUntil {sleep 1; scriptDone _scriptID};//wait till clean finishes
+		_groupMoving = grpNull;
+		       // find a group
 
-        _maxHCName = GVAR(HeadlessArray) select _maxHC;
-        _minHCName = GVAR(HeadlessArray) select _minHC;
+		{
+			_group = _x select 0;
+			_owner = _x select 1;
+			if (_owner isEqualTo _maxHCName) then {
+				if (count units _group <= _diff/2) exitWith {
+					_groupMoving = _group;
+					_groupIndex = _forEachIndex;
+					                   // (GVAR(HeadlessLocalCounts) select _maxHC) = (GVAR(HeadlessLocalCounts) select _maxHC) - (count units _x);
+					GVAR(HeadlessLocalCounts) set [_maxHC, (GVAR(HeadlessLocalCounts) select _maxHC) - (count units _group)];
+				};
+			};
+		} forEach GVAR(HeadlessGrpData);
 
-        _groupMoving = grpNull;
-        //find a group
+		       // no transferrable group
+		if (isNull _groupMoving) exitWith {
+			_balanced = true
+		};
 
-        {
-            _group = _x select 0;
-            _owner = _x select 1;
-            if (_owner isEqualTo _maxHCName) then {
-                if (count units _group <= _diff/2) exitWith {
-                    _groupMoving = _group;
-                    _groupIndex = _forEachIndex;
-                    //(GVAR(HeadlessLocalCounts) select _maxHC) = (GVAR(HeadlessLocalCounts) select _maxHC) - (count units _x);
-                    GVAR(HeadlessLocalCounts) set [_maxHC, (GVAR(HeadlessLocalCounts) select _maxHC) - (count units _group)];
-                };
-            };
-        } forEach GVAR(HeadlessGrpData);
+		       // variables
+		_lead = leader _groupMoving;
+		_vehicle = vehicle _lead;
 
-        //no transferrable group
-        if (isNull _groupMoving) exitwith { _balanced = true };
+		       // check garrison
+		if ((_groupMoving getVariable ["Achilles_var_inGarrison", false]) || (_lead getVariable ["zen_ai_garrisoned", false]) || (_groupMoving getVariable ["ace_ai_garrisoned", false]) || !(_lead checkAIFeature "PATH")) then {
+			_groupGarrisoned = true;
+		} else {
+			_groupGarrisoned = false;
+		};
 
-        //variables
-        _lead = leader _groupMoving;
-        _vehicle = vehicle _lead;
+		       // save loadouts
+		if (_transferLoadout == 1) then {
+			{
+				_x setVariable [QGVAR(UnitLoadout), getUnitLoadout _x];
+			} forEach units _groupMoving;
+		};
 
-        //check garrison
-        if ((_groupMoving getVariable ["Achilles_var_inGarrison", false]) || (_lead getVariable ["zen_ai_garrisoned", false]) || (_groupMoving getVariable ["ace_ai_garrisoned", false]) || !(_lead checkAIFeature "PATH")) then {
-            _groupGarrisoned = true;
-        } else {
-            _groupGarrisoned = false;
-        };
+		_vehicle lock true;
 
-        //save loadouts
-        if (_transferLoadout == 1) then {
-            {
-                _x setVariable [QGVAR(UnitLoadout), getUnitLoadout _x];
-            } forEach units _groupMoving;
-        };
+		sleep (GVAR(OffloadDelay)/3);
 
-        _vehicle lock true;
+		if (isNull _groupMoving) then {
+			continue
+		};
+		if (GVAR(EmergencyTransferring)) exitWith {
+			BROADCAST_WARN("Stopping Rebalance due to emergency dump");
+			WARNING("Stopping Rebalance due to emergency dump");
+		};
 
-        sleep (GVAR(OffloadDelay)/3);
+		_groupMoving setGroupOwner (GVAR(HeadlessIds) select _minHC);
 
-        if (isNull _groupMoving) then {continue};
-        if (GVAR(EmergencyTransferring)) exitWith {
-            BROADCAST_WARN("Stopping Rebalance due to emergency dump");
-            WARNING("Stopping Rebalance due to emergency dump");
-        };
+		       // reapply garrison
+		if (_groupGarrisoned) then {
+			[_groupMoving] remoteExec [QFUNC(reGarrison), GVAR(HeadlessIds) select _minHC];
+		};
 
-        _groupMoving setGroupOwner (GVAR(HeadlessIds) select _minHC);
+		sleep (GVAR(OffloadDelay)/3);
+		if (isNull _groupMoving) then {
+			continue
+		};
+		if (GVAR(EmergencyTransferring)) exitWith {
+			BROADCAST_WARN("Stopping Rebalance due to emergency dump");
+			WARNING("Stopping Rebalance due to emergency dump");
+		};
 
-        //reapply garrison
-        if (_groupGarrisoned) then {
-            [_groupMoving] remoteExecCall [QFUNC(reGarrison), GVAR(HeadlessIds) select _minHC];
-        };
+		       // reapply loadouts
+		if (_transferLoadout > 0) then {
+			if (_transferLoadout == 1) then {
+				{
+					if (uniform _x == "") then {
+						_x setUnitLoadout (_x getVariable [QGVAR(UnitLoadout), typeOf _x]);
+					};
+				} forEach units _groupMoving;
+			} else {
+				{
+					if (uniform _x == "") then {
+						_x setUnitLoadout (typeOf _x);
+					};
+				} forEach units _groupMoving;
+			};
+		};
+		GVAR(HeadlessGrpData) set [_groupIndex, [_groupMoving, _minHCName]];
+		GVAR(HeadlessLocalCounts) set [_minHC, (GVAR(HeadlessLocalCounts) select _minHC) + (count units _groupMoving)];
 
-        sleep (GVAR(OffloadDelay)/3);
-        if (isNull _groupMoving) then {continue};
-        if (GVAR(EmergencyTransferring)) exitWith {
-            BROADCAST_WARN("Stopping Rebalance due to emergency dump");
-            WARNING("Stopping Rebalance due to emergency dump");
-        };
-
-        //reapply loadouts
-        if (_transferLoadout > 0) then {
-            if (_transferLoadout == 1) then {
-                {
-                    if (uniform _x == "") then {
-                        _x setUnitLoadout (_x getVariable [QGVAR(UnitLoadout), typeof _x]);
-                    };
-                } forEach units _groupMoving;
-            } else {
-                {
-                    if (uniform _x == "") then {
-                        _x setUnitLoadout (typeof _x);
-                    };
-                } forEach units _groupMoving;
-            };
-        };
-        GVAR(HeadlessGrpData) set [_groupIndex, [_groupMoving, _minHCName]];
-        GVAR(HeadlessLocalCounts) set [_minHC, (GVAR(HeadlessLocalCounts) select _minHC) + (count units _groupMoving)];
-
-        if (_debugEnabled) then {
-            _groupMoving setVariable [QGVAR(OwningClient), _minHCName, true];
-        } else {
-            _groupMoving setVariable [QGVAR(OwningClient), _minHCName];
-        };
-        BROADCAST_INFO_1("Moved group: %1",str _groupMoving);
-        sleep (GVAR(OffloadDelay)/3);
-        if (isNull _groupMoving) then {continue};
-        _vehicle lock false;
-
-    } else {
-        _balanced = true;
-        BROADCAST_INFO("Balanced");
-    };
+		if (_debugEnabled) then {
+			_groupMoving setVariable [QGVAR(OwningClient), _minHCName, true];
+		} else {
+			_groupMoving setVariable [QGVAR(OwningClient), _minHCName];
+		};
+		BROADCAST_INFO_1("Moved group: %1", str _groupMoving);
+		sleep (GVAR(OffloadDelay)/3);
+		if (isNull _groupMoving) then {
+			continue
+		};
+		_vehicle lock false;
+	} else {
+		_balanced = true;
+		BROADCAST_INFO("Balanced");
+	};
 };
 
 BROADCAST_INFO("Rebalance Complete");
