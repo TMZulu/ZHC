@@ -92,7 +92,6 @@ INFO('FastTransferring set');
 	};
 	if (_groupIndex != -1) then {
 		GVAR(HeadlessGrpData) deleteAt _groupIndex;
-		GVAR(HeadlessLocalCounts) set [_hcIndex, (GVAR(HeadlessLocalCounts) select _hcIndex) - _size];
 	};
 
 	GVAR(ZeusGrpData) pushBack ([_groupMoving, GVAR(ZeusArray) select _dataIndex]);

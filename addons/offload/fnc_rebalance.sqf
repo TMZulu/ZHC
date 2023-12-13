@@ -69,11 +69,11 @@ while { !_balanced } do {
 	_diff = (_prevCountMax - _prevCountMin);
 
 	if (_diff > 1) then {
-		_scriptID  = [] spawn FUNC(cleanup)// clear empty groups
-		 waitUntil {
+		_scriptID  = [] spawn FUNC(cleanup);// clear empty groups
+		waitUntil {
 			sleep 1;
 			scriptDone _scriptID
-		}// wait till clean finishes
+		};// wait till clean finishes
 
 		_maxHCName = GVAR(HeadlessArray) select _maxHC;
 		_minHCName = GVAR(HeadlessArray) select _minHC;
