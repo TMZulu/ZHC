@@ -23,6 +23,7 @@ if (GVAR(DebugMode) > 0) then {
 };
 
 GVAR(ProcessingDisconnect) = true;// global flag
+INFO('ProcessingDisconnect set');
 
 if (_unit in GVAR(HeadlessArray)) exitWith {
 	_index = GVAR(HeadlessArray) find _unit;
@@ -48,7 +49,7 @@ if (_unit in GVAR(HeadlessArray)) exitWith {
 		[_dumpGroup, true] spawn FUNC(emergencyDump);
 	};
 	BROADCAST_INFO("End Processing Disconnect");
-
+	INFO('ProcessingDisconnect unset');
 	GVAR(ProcessingDisconnect) = false;
 };
 
@@ -76,6 +77,6 @@ if (_unit in GVAR(ZeusArray)) exitWith {
 		[_dumpGroup, false] spawn FUNC(emergencyDump);
 	};
 	BROADCAST_INFO("End Processing Disconnect");
-
+	INFO('ProcessingDisconnect unset');
 	GVAR(ProcessingDisconnect) = false;
 };

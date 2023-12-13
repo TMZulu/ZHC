@@ -25,7 +25,9 @@ waitUntil {
 BROADCAST_WARN("Emergency Dump Started");
 
 GVAR(FastTransferring) = true;
+INFO('FastTransferring set');
 GVAR(EmergencyTransferring) = true;
+INFO('EmergencyTransferring set');
 
 WARNING("Set Emergency Transferring Flag");
 
@@ -96,7 +98,7 @@ if (GVAR(DebugMode) > 0) then {
 
 	        // reapply garrison
 	if (_groupGarrisoned) then {
-		[_groupMoving] remoteExecCall [QFUNC(reGarrison), GVAR(HeadlessIds) select _hcIndex];
+		[_groupMoving] remoteExec [QFUNC(reGarrison), GVAR(HeadlessIds) select _hcIndex];
 	};
 
 	BROADCAST_INFO_2("Transferred group %1 to %2", str _groupMoving, str (GVAR(HeadlessArray) select _hcIndex));
@@ -160,4 +162,6 @@ if (GVAR(DebugMode) > 0) then {
 
 BROADCAST_WARN("Removed Fast Transferring Flag");
 GVAR(FastTransferring) = false;
+INFO('FastTransferring unset');
 GVAR(EmergencyTransferring) = false;
+INFO('EmergencyTransferring unset');
