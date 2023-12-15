@@ -23,7 +23,7 @@ if (GVAR(DebugMode) > 0) then {
 };
 
 GVAR(ProcessingDisconnect) = true;// global flag
-INFO('ProcessingDisconnect set');
+INFO_1('ProcessingDisconnect set : %1', _name);
 
 if (_unit in GVAR(HeadlessArray)) exitWith {
 	_index = GVAR(HeadlessArray) find _unit;
@@ -80,3 +80,7 @@ if (_unit in GVAR(ZeusArray)) exitWith {
 	INFO('ProcessingDisconnect unset');
 	GVAR(ProcessingDisconnect) = false;
 };
+
+// unflag if normal player
+INFO('ProcessingDisconnect unset');
+GVAR(ProcessingDisconnect) = false;
