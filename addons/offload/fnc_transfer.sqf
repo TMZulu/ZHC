@@ -37,7 +37,7 @@ INFO_1("Started Transferring for %1 groups", count _groupArray);
 
 {
 	waitUntil {
-		sleep 0.1;
+		sleep 0.5;
 		!GVAR(ProcessingDisconnect)
 	};
 	if (GVAR(EmergencyTransferring)) exitWith {
@@ -45,7 +45,7 @@ INFO_1("Started Transferring for %1 groups", count _groupArray);
 		WARNING("Stopping Transferring due to emergency dump");
 	};
 	waitUntil {
-		sleep 0.1;
+		sleep 0.5;
 		!GVAR(FastTransferring)
 	};
 
@@ -148,7 +148,7 @@ INFO_1("Started Transferring for %1 groups", count _groupArray);
 	};
 
 	waitUntil {
-		sleep 0.1;
+		sleep 0.5;
 		!GVAR(ProcessingDisconnect)
 	};
 
