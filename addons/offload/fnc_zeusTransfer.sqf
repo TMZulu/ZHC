@@ -83,7 +83,7 @@ INFO('FastTransferring set');
 	};
 
 	waitUntil {
-		sleep 0.1;
+		sleep 0.5;
 		!GVAR(ProcessingDisconnect)
 	};// prevent some desync issues
 
